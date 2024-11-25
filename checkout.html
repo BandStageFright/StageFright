@@ -15,50 +15,46 @@
 
     <div id="checkout_form" style="margin: 20px;">
         <form class="mb-3">
-            <div id="personal_information">
-                <div id="form_header">Personal Information</div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" id="first_name" class="form-control" placeholder="First name">
-                    </div>
-                    <div class="col">
-                        <input type="text" id="last_name" class="form-control" placeholder="Last name">
-                    </div>
+            <div class="form_header">Personal Information</div>
+            <div class="row mb-3">
+                <div class="col">
+                    <input type="text" id="first_name" class="form-control" placeholder="First name">
                 </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" id="email" placeholder="Email Address">
-                </div>
-                <div class="row g-2 mb-3">
-                    <div class="col-sm-9">
-                      <input type="number" id="credit_card" class="form-control" placeholder="Credit Card #">
-                    </div>
-                    <div class="col-sm">
-                      <input type="number" id="CCV" class="form-control" placeholder="CCV">
-                    </div>
+                <div class="col">
+                    <input type="text" id="last_name" class="form-control" placeholder="Last name">
                 </div>
             </div>
-            <div id="billing_address" style="display: none;">
-                <div id="form_header">Billing Address</div>
-                <div class="mb-3">
-                    <input type="text" id="address" class="form-control" placeholder="Address">
+            <div class="mb-3">
+                <input type="email" class="form-control" id="email" placeholder="Email Address">
+            </div>
+            <div class="row g-2 mb-3">
+                <div class="col-sm-9">
+                    <input type="number" id="credit_card" class="form-control" placeholder="Credit Card #">
                 </div>
-                <div class="row g-4 mb-3">
-                    <div class="col-sm-7">
-                      <input type="text" id="city" class="form-control" placeholder="City">
-                    </div>
-                    <div class="col-sm">
-                      <input type="text" id="state" class="form-control" placeholder="State">
-                    </div>
-                    <div class="col-sm">
-                      <input type="text" id="zipcode" class="form-control" placeholder="Zip">
-                    </div>
+                <div class="col-sm">
+                    <input type="number" id="CCV" class="form-control" placeholder="CCV">
                 </div>
-                <div class="mb-3">
-                    <input type="text" id="country" class="form-control" id="country" placeholder="Country">
+            </div>
+            <div class="form_header">Billing Address</div>
+            <div class="mb-3">
+                <input type="text" id="address" class="form-control" placeholder="Address">
+            </div>
+            <div class="row g-4 mb-3">
+                <div class="col-sm-7">
+                    <input type="text" id="city" class="form-control" placeholder="City">
                 </div>
+                <div class="col-sm">
+                    <input type="text" id="state" class="form-control" placeholder="State">
+                </div>
+                <div class="col-sm">
+                    <input type="text" id="zipcode" class="form-control" placeholder="Zip">
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="text" id="country" class="form-control" id="country" placeholder="Country">
             </div>
             <button type="submit" id="order_button" class="btn btn-primary">Order</button>
-          </form>
+        </form>
     </div>
 </body>
 </html>
