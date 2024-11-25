@@ -25,7 +25,10 @@ const personalinfo_section = document.getElementById("personal_information")
 const address_section = document.getElementById("billing_address")
 const order_button = document.getElementById("order_button")
 
-let product_type = ""
+let product_id = null
+let product_data = null
+let product_type = null
+
 function display_product(product_info){
     product_name.textContent = "Product Name: " + product_info["item_name"]
     product_price.textContent = "Product Price: " + product_info["price"]
@@ -34,10 +37,10 @@ function display_product(product_info){
 
 window.addEventListener("load", function(){
     if(sessionStorage["product_to_buy"] != undefined){
-        let product_id = "0002"
+        product_id = "0002"
         //let product_id = sessionStorage["product_to_buy"]
         get(ref(db, "products/tickets/" + product_id)).then(function(snapshot){
-            let product_data = snapshot.val()
+            product_data = snapshot.val()
             if(product_data == null){
                 get(ref(db, "products/merch/" + product_id)).then(function(snapshot){
                     product_data = snapshot.val()
@@ -48,14 +51,31 @@ window.addEventListener("load", function(){
                         address_section.style.display = "block"
                         display_product(product_data)
                     }
-                }).catch(function(err){console.log("Error: " + err)})
+                }).catch(function(err){alert("Error: " + err)})
             } else {
                 product_type = "tickets"
                 display_product(product_data)
             }
-        }).catch(function(err){console.log("Error: " + err)})
+        }).catch(function(err){alert("Error: " + err)})
     } else {
         //location.href = "index.html"
     }
 })
 
+order_button.addEventListener("click", function(e){
+    e.preventDefault()
+    get(ref(db, "products/"+product_type+"/"+product_id)).then(function(snapshot){
+        let live_product_quantity = snapshot.val()["quantity"]
+        if(live_product_quantity > 0){
+            update(ref(db, "products/"+product_type+"/"+product_id), {
+                quantity: live_product_quantity - 1
+            }).then(function(){
+                alert("Order successfully placed! Check your inbox for a confirmation email.")
+                location.reload()
+            }).catch(function(err){alert("Error: " + err)})
+        } else {
+            alert("This item is now sold out. Sorry!")
+            location.href = "index.html"
+        }
+    }).catch(function(err){alert("Error: " + err)})
+})
