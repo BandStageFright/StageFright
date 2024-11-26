@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { get, set, update, ref, getDatabase } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import { get, update, ref, getDatabase } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,7 +37,7 @@ function display_product(product_info){
 
 window.addEventListener("load", function(){
     if(sessionStorage["product_to_buy"] != undefined){
-        product_id = "0002"
+        product_id = "0001"
         //let product_id = sessionStorage["product_to_buy"]
         get(ref(db, "products/tickets/" + product_id)).then(function(snapshot){
             product_data = snapshot.val()

@@ -51,18 +51,72 @@ window.addEventListener("load", function(){
 
 order_button.addEventListener("click", function(e){
     e.preventDefault()
-    get(ref(db, "products/merch/"+product_id)).then(function(snapshot){
-        let live_product_quantity = snapshot.val()["quantity"]
-        if(live_product_quantity > 0){
-            update(ref(db, "products/"+product_type+"/"+product_id), {
-                quantity: live_product_quantity - 1
-            }).then(function(){
-                alert("Order successfully placed! Check your inbox for a confirmation email.")
-                location.reload()
-            }).catch(function(err){alert("Error: " + err)})
-        } else {
-            alert("This item is now sold out. Sorry!")
-            location.href = "merch.html"
-        }
-    }).catch(function(err){alert("Error: " + err)})
+
+    send_email("Order", "You've ordered... something")
 })
+
+/* SmtpJS.com - v3.0.0 */
+var Email = {
+    send: function (a) {
+        return new Promise(function (resolve, reject) {
+            a.nocache = Math.floor(1e6 * Math.random() + 1);
+            a.Action = "Send";
+            var json = JSON.stringify(a);
+            Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", json, function (response) {
+                resolve(response);
+            });
+        });
+    },
+    ajaxPost: function (url, data, callback) {
+        var request = Email.createCORSRequest("POST", url);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.onload = function () {
+            var response = request.responseText;
+            if (callback != null) callback(response);
+        };
+        request.send(data);
+    },
+    ajax: function (url, callback) {
+        var request = Email.createCORSRequest("GET", url);
+        request.onload = function () {
+            var response = request.responseText;
+            if (callback != null) callback(response);
+        };
+        request.send();
+    },
+    createCORSRequest: function (method, url) {
+        var request = new XMLHttpRequest();
+        if ("withCredentials" in request) {
+            request.open(method, url, true);
+        } else if (typeof XDomainRequest != "undefined") {
+            request = new XDomainRequest();
+            request.open(method, url);
+        } else {
+            request = null;
+        }
+        return request;
+    }
+};
+
+function send_email(subject, message){
+    Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "stagefrightbandinbox@gmail.com",
+        Password : "C52E2686F30B4CD492367B323A7216F01BD5",
+        To : "stagefrightbandinbox@gmail.com",
+        From : "stagefrightbandinbox@gmail.com",
+        Subject : subject,
+        Body : message,
+        Port: 587
+    }).then(
+        message => alert(message)
+    );
+}
+
+/*
+TODO:
+-> Configure appscript trigger to go every minute
+-> Setup checkout system with cart and stuff
+-> Make sure subject line follows the format: 'Order-email'
+-> More shop stuff
+*/
