@@ -22,6 +22,7 @@ let products_data = null
 let cart = {}
 
 const cart_button = document.getElementById("cart_button")
+const cart_div = document.getElementById("cart")
 const order_button = document.getElementById("order_button")
 
 window.addEventListener("load", function(){
@@ -38,7 +39,8 @@ window.addEventListener("load", function(){
                     cart[keys[i]]["quantity"] += 1
                 } else {
                     cart[keys[i]] = {
-                        "product_name" : values[i]["item_name"],
+                        "item_name" : values[i]["item_name"],
+                        "price": values[i]["price"],
                         "quantity": 1
                     }
                 }
@@ -47,6 +49,17 @@ window.addEventListener("load", function(){
             document.body.appendChild(product_listing)
         }
     }).catch(function(err){alert("Error: " + err)})
+})
+
+cart_button.addEventListener("click", function(){
+    let keys = Object.keys(cart)
+    let values = Object.values(cart)
+    for(let i = 0; i < keys.length; i++){
+        let line = values[i]["item_name"] + " (x" + values[i]["quantity"] + ")...............$" + Math.round(values[i]["quantity"]*values[i]["price"], 2)
+        let line_div = document.createElement("div")
+        line_div.textContent = line
+        cart_div.appendChild(line_div)
+    }
 })
 
 order_button.addEventListener("click", function(e){
@@ -112,6 +125,33 @@ function send_email(subject, message){
         message => alert(message)
     );
 }
+
+
+// Adding Items
+const id_input = document.getElementById("id_input")
+const name_input = document.getElementById("name_input")
+const price_input = document.getElementById("price_input")
+const quantity_input = document.getElementById("quantity_input")
+const submit_button = document.getElementById("add_product_button")
+
+submit_button.addEventListener("click", function(){
+    let id = id_input.value
+    let name = name_input.value
+    let price = price_input.value
+    let quantity = quantity_input.value
+
+    if(id == ""){
+        id = "0000"
+    }
+
+    set(ref(db, "products/merch/"+id), {
+        item_name: name,
+        price: price,
+        quantity: quantity
+    }).then(function(){}).catch(function(err){
+        alert(err)
+    })
+})
 
 /*
 TODO:

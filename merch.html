@@ -31,19 +31,19 @@
     </nav>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
+    <button type="button" id="cart_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cart_modal">
+        My Cart
     </button>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cart_modal" tabindex="-1" aria-labelledby="cart_modal_label">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">My Cart</h1>
+                    <h1 class="modal-title fs-5" id="cart_modal_label">My Cart</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="margin: 10px;">
-                    <div id="order_summary">
+                    <div id="cart">
                         <div class="form_header">Your Cart</div>
                     </div>
                     <div id="checkout_form">
@@ -100,6 +100,28 @@
             </div>
         </div>
     </div>
+
+
+
+    <form>
+        <div class="mb-3">
+            <label for="id_input" class="form-label">Product ID</label>
+            <input type="number" class="form-control" id="id_input">
+        </div>
+        <div class="mb-3">
+            <label for="name_input" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="name_input">
+        </div>
+        <div class="mb-3">
+            <label for="price_input" class="form-label">Product Price</label>
+            <input type="text" class="form-control" id="price_input">
+        </div>
+        <div class="mb-3">
+            <label for="quantity_input" class="form-label">Product Quantity</label>
+            <input type="text" class="form-control" id="quantity_input">
+        </div>
+        <button type="submit" id="add_product_button" class="btn btn-primary">Submit</button>
+    </form>
 
 </body>
 </html>
