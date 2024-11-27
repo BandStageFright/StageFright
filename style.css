@@ -1,7 +1,18 @@
 .form_header{
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
+  
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+ }
 
 .main-content {
     flex-grow: 1;
@@ -23,8 +34,36 @@
     font-size: 1.5rem;
 }
 
-#total_label{
-    font-weight: 500;
-    margin-top: 5px;
-    margin-bottom: 5px;
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer form {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #343a40;
+    border-radius: 8px;
+}
+
+footer form .form-label {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+footer form .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+
+@media (max-width: 768px) {
+    footer form {
+        max-width: 90%;
+    }
 }
