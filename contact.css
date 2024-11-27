@@ -1,0 +1,33 @@
+h1 {
+  text-align: center;
+  padding-top: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+form {
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+form .form-label {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+form .form-control {
+  border: #0000005f solid;
+  border-radius: 0.5;
+}
+
+form .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+form .btn {
+  margin: 10px auto;
+  display: block;
+  text-align: center;
+}
