@@ -31,9 +31,21 @@ window.addEventListener("load", function(){
         let keys = Object.keys(products_data)
         let values = Object.values(products_data)
         for(let i = 0; i < keys.length; i++){
-            let product_listing = document.createElement("button")
+            let product_listing = document.createElement("div")
+            product_listing.classList.add("card")
             product_listing.id = keys[i]
-            product_listing.textContent = values[i]["item_name"]
+            let product_image = document.createElement("img")
+            if(values[i]["image"] != undefined){
+                product_image.src = values[i]["image"]
+            } 
+            product_image.alt = values[i]["item_name"]
+            let product_listing_content = document.createElement("div") 
+            let product_name = document.createElement("h5")
+            product_name.textContent = values[i]["item_name"]
+            product_listing_content.appendChild(product_name)
+            
+            // TODO: Make each product automatically generate a new card
+
             product_listing.addEventListener("click", function(){
                 let cart = {}
                 if(localStorage["cart"] != undefined){
