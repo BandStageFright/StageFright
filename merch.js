@@ -18,16 +18,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
-let products_data = null
-let cart = {}
 
+const products_div = document.getElementById("products")
 const cart_button = document.getElementById("cart_button")
 const cart_div = document.getElementById("cart")
+const clear_button = document.getElementById("clear_button")
 const order_button = document.getElementById("order_button")
 
 window.addEventListener("load", function(){
     get(ref(db, "products/merch")).then(function(snapshot){
-        products_data = snapshot.val()
+        let products_data = snapshot.val()
         let keys = Object.keys(products_data)
         let values = Object.values(products_data)
         for(let i = 0; i < keys.length; i++){
@@ -35,6 +35,10 @@ window.addEventListener("load", function(){
             product_listing.id = keys[i]
             product_listing.textContent = values[i]["item_name"]
             product_listing.addEventListener("click", function(){
+                let cart = {}
+                if(localStorage["cart"] != undefined){
+                    cart = JSON.parse(localStorage["cart"])
+                }
                 if(cart[keys[i]] != undefined){
                     cart[keys[i]]["quantity"] += 1
                 } else {
@@ -44,28 +48,48 @@ window.addEventListener("load", function(){
                         "quantity": 1
                     }
                 }
+                localStorage["cart"] = JSON.stringify(cart)
                 console.log(cart)
             })
-            document.body.appendChild(product_listing)
+            products_div.appendChild(product_listing)
         }
     }).catch(function(err){alert("Error: " + err)})
 })
 
 cart_button.addEventListener("click", function(){
-    let keys = Object.keys(cart)
-    let values = Object.values(cart)
-    for(let i = 0; i < keys.length; i++){
-        let line = values[i]["item_name"] + " (x" + values[i]["quantity"] + ")...............$" + Math.round(values[i]["quantity"]*values[i]["price"], 2)
-        let line_div = document.createElement("div")
-        line_div.textContent = line
-        cart_div.appendChild(line_div)
+    if(localStorage["cart"] != undefined){
+        let cart = JSON.parse(localStorage["cart"])
+        let keys = Object.keys(cart)
+        let values = Object.values(cart)
+        let total = 0.0
+        cart_div.textContent = ""
+        for(let i = 0; i < keys.length; i++){
+            let price = values[i]["quantity"]*values[i]["price"]
+            let line = values[i]["item_name"] + " (x" + values[i]["quantity"] + ")...............$" + String(price.toFixed(2))
+            let line_div = document.createElement("div")
+            line_div.classList.add("cart_line")
+            line_div.textContent = line
+            cart_div.appendChild(line_div)
+            total += price
+        }
+        let total_div = document.createElement("div")
+        total_div.textContent = "Total: $" + total.toFixed(2)
+        total_div.id = "total_label"
+        cart_div.appendChild(total_div)
+    } else {
+        cart_div.textContent = "Your cart is empty!"
     }
 })
 
 order_button.addEventListener("click", function(e){
     e.preventDefault()
-
     send_email("Order", "You've ordered... something")
+})
+
+clear_button.addEventListener("click", function(){
+    if(localStorage["cart"] != undefined){
+        localStorage.removeItem("cart")
+    }
 })
 
 /* SmtpJS.com - v3.0.0 */
@@ -152,11 +176,3 @@ submit_button.addEventListener("click", function(){
         alert(err)
     })
 })
-
-/*
-TODO:
--> Configure appscript trigger to go every minute
--> Setup checkout system with cart and stuff
--> Make sure subject line follows the format: 'Order-email'
--> More shop stuff
-*/
