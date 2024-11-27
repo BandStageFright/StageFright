@@ -12,6 +12,36 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    position: relative;
+ }
+
+ .cart_line{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+ }
+
+ .cart_line *{
+    margin-right: 10px;
+ }
+
+ #cart_button{
+    width: 75px;
+    height: 75px;
+    position: fixed;
+    border-radius: 100px;
+    bottom: 7vw;
+    right: 3vw;
+ }
+
+ #cart_items{
+    position: absolute;
+    background-color: crimson;
+    width: 25px;
+    height: 25px;
+    border-radius: 100px;
+    top: 0;
+    left: 0;
  }
 
 .main-content {
