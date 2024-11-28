@@ -254,13 +254,18 @@ const id_input = document.getElementById("id_input")
 const name_input = document.getElementById("name_input")
 const price_input = document.getElementById("price_input")
 const quantity_input = document.getElementById("quantity_input")
+const image_input = document.getElementById("image_input")
 const submit_button = document.getElementById("add_product_button")
+const product_form = document.getElementById("product_form")
 
-submit_button.addEventListener("submit", function(){
+product_form.addEventListener("submit", function(e){
+    e.preventDefault()
+
     let id = id_input.value
     let name = name_input.value
     let price = price_input.value
     let quantity = quantity_input.value
+    let image = image_input.value
 
     if(id == ""){
         id = "0000"
@@ -269,10 +274,13 @@ submit_button.addEventListener("submit", function(){
     set(ref(db, "products/merch/"+id), {
         item_name: name,
         price: price,
-        quantity: quantity
+        quantity: quantity,
+        image: image
     }).then(function(){
         alert("Product Successfully Added!")
     }).catch(function(err){
         alert(err)
     })
+
+    product_form.submit()
 })
