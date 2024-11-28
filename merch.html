@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merch - Stage Fright</title>
+    <title>Merch | Stage Fright</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="merch.js" type="module"></script>
-    <script src="load.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js" defer></script>
+    <script src="merch.js" type="module" defer></script>
+    <script src="load.js" defer></script>
 </head>
-<body>
 
+<body>
 <!-- Navbar -->
 <div id="navbar"></div>
 
@@ -27,12 +29,13 @@
     </div>
 </section>
 
-<!-- Button trigger modal -->
-<button type="button" id="cart_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cart_modal">
+<!-- Cart Button -->
+<button type="button" id="cart_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cart_modal" style="z-index: 2;">
     <i class="bi bi-basket2-fill" style="font-size: 30px;"></i>
-    <div id="cart_items">1</div>
+    <div id="cart_items">0</div>
 </button>
 
+<!-- Cart Modal -->
 <div class="modal fade" id="cart_modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
@@ -64,10 +67,10 @@
                         <div class="form_header">Billing Address</div>
                         <div class="row g-2 mb-3">
                             <div class="col-sm-9">
-                                <input type="number" id="credit_card" class="form-control" placeholder="Credit Card #" required>
+                                <input type="number" id="credit_card_number" class="form-control" placeholder="Credit Card #" required>
                             </div>
                             <div class="col-sm">
-                                <input type="number" id="CCV" class="form-control" placeholder="CCV" required>
+                                <input type="number" id="ccv" class="form-control" placeholder="CCV" required>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -98,11 +101,12 @@
     </div>
 </div>
   
-  <!-- Button trigger modal -->
+ <!-- Add Product Button -->
 <button type="button" id="open_product_add" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_product_modal">
     Add a product to firebase
 </button>
 
+<!-- Add Product Modal -->
 <div class="modal fade" id="add_product_modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
@@ -125,6 +129,9 @@
                     <div class="mb-3">
                         <input type="text" class="form-control" id="quantity_input" placeholder="Product Quantity" required>
                     </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="image_input" placeholder="Product Image Link">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -136,7 +143,5 @@
 
 <!-- Footer -->
 <div id="footer"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
