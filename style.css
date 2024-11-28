@@ -9,6 +9,37 @@ body {
   margin: 0;
 }
 
+a:hover{
+  transition: ease 0.25s;
+  color: rgba(233, 83, 83, 0.851);
+}
+
+i:hover{
+  transition: ease 0.25s;
+  color: rgba(233, 83, 83, 0.851);
+}
+
+#tickets *{
+  height: 25px;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#ticket_number{
+  display: flex;
+  align-content: center;
+}
+
+#ticket_quantity{
+  width: 50px;
+}
+
+#ticket_number *{
+  margin-right: 5px;
+}
+
 .card-title{
   white-space: nowrap;
   overflow: hidden;
