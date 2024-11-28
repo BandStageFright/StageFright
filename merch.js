@@ -18,14 +18,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
+// Elements 
 const cart_button = document.getElementById("cart_button");
 const cart_items = document.getElementById("cart_items");
 const cart_div = document.getElementById("cart");
 const clear_button = document.getElementById("clear_button");
-const order_button = document.getElementById("order_button");
 const checkout_form = document.getElementById("checkout_form");
 
+// Global Variables
 let items_in_cart = 0;
+  
+function send_email(subject, message) {
+  Email.send({
+    Host: "smtp.elasticemail.com",
+    Username: "stagefrightbandinbox@gmail.com",
+    Password: "C52E2686F30B4CD492367B323A7216F01BD5",
+    To: "stagefrightbandinbox@gmail.com",
+    From: "stagefrightbandinbox@gmail.com",
+    Subject: subject,
+    Body: message,
+    Port: 587,
+  }).then((message) => alert("Order Placed! (Status: " + message + ")"));
+}
 
 function display_cart() {
   cart_div.textContent = "";
@@ -236,68 +250,6 @@ clear_button.addEventListener("click", function () {
   display_cart();
 });
 
-/* SmtpJS.com - v3.0.0 */
-var Email = {
-  send: function (a) {
-    return new Promise(function (resolve, reject) {
-      a.nocache = Math.floor(1e6 * Math.random() + 1);
-      a.Action = "Send";
-      var json = JSON.stringify(a);
-      Email.ajaxPost(
-        "https://smtpjs.com/v3/smtpjs.aspx?",
-        json,
-        function (response) {
-          resolve(response);
-        }
-      );
-    });
-  },
-  ajaxPost: function (url, data, callback) {
-    var request = Email.createCORSRequest("POST", url);
-    request.setRequestHeader(
-      "Content-type",
-      "application/x-www-form-urlencoded"
-    );
-    request.onload = function () {
-      var response = request.responseText;
-      if (callback != null) callback(response);
-    };
-    request.send(data);
-  },
-  ajax: function (url, callback) {
-    var request = Email.createCORSRequest("GET", url);
-    request.onload = function () {
-      var response = request.responseText;
-      if (callback != null) callback(response);
-    };
-    request.send();
-  },
-  createCORSRequest: function (method, url) {
-    var request = new XMLHttpRequest();
-    if ("withCredentials" in request) {
-      request.open(method, url, true);
-    } else if (typeof XDomainRequest != "undefined") {
-      request = new XDomainRequest();
-      request.open(method, url);
-    } else {
-      request = null;
-    }
-    return request;
-  },
-};
-
-function send_email(subject, message) {
-  Email.send({
-    Host: "smtp.elasticemail.com",
-    Username: "stagefrightbandinbox@gmail.com",
-    Password: "C52E2686F30B4CD492367B323A7216F01BD5",
-    To: "stagefrightbandinbox@gmail.com",
-    From: "stagefrightbandinbox@gmail.com",
-    Subject: subject,
-    Body: message,
-    Port: 587,
-  }).then((message) => alert("Order Placed! (Status: " + message + ")"));
-}
 
 // Adding Items
 const id_input = document.getElementById("id_input");
