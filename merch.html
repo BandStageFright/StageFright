@@ -28,7 +28,7 @@
 </section>
 
 <!-- Button trigger modal -->
-<button type="button" id="cart_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cart_modal">
+<button type="button" id="cart_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cart_modal" style="z-index: 2;">
     <i class="bi bi-basket2-fill" style="font-size: 30px;"></i>
     <div id="cart_items">?</div>
 </button>
@@ -64,10 +64,10 @@
                         <div class="form_header">Billing Address</div>
                         <div class="row g-2 mb-3">
                             <div class="col-sm-9">
-                                <input type="number" id="credit_card" class="form-control" placeholder="Credit Card #" required>
+                                <input type="number" id="credit_card_number" class="form-control" placeholder="Credit Card #" required>
                             </div>
                             <div class="col-sm">
-                                <input type="number" id="CCV" class="form-control" placeholder="CCV" required>
+                                <input type="number" id="ccv" class="form-control" placeholder="CCV" required>
                             </div>
                         </div>
                         <div class="mb-3">
