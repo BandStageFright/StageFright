@@ -53,34 +53,76 @@ function display_cart() {
     for (let i = 0; i < keys.length; i++) {
       let quantity = values[i]["quantity"];
       total_quantity += quantity;
+
       let price = values[i]["quantity"] * values[i]["price"];
+
       let line_div = document.createElement("div");
       line_div.classList.add("cart_line");
+
+      let line_text = document.createElement("div");
+      line_text.textContent = values[i]["item_name"] + "...............$" + String(price.toFixed(2));
+
       let quantity_input = document.createElement("input");
-      quantity_input.style.width = "50px";
-      quantity_input.style.textAlign = "center";
-      quantity_input.type = "number";
       quantity_input.min = 0;
+      quantity_input.max = 999
+      quantity_input.style.width = "50px";
+      quantity_input.style.alignContent = "center";
+      quantity_input.type = "number";
       quantity_input.value = values[i]["quantity"];
-      quantity_input.addEventListener("change", function () {
+
+      function update_quantity(){
+        items_in_cart -= quantity
+        quantity = Number(quantity_input.value)
+        items_in_cart += quantity
+        cart_items.textContent = items_in_cart;
+
         if (quantity_input.value == 0) {
           delete cart[keys[i]];
-          items_in_cart -= quantity;
+          line_div.remove()
         } else {
-          cart[keys[i]]["quantity"] =
-            quantity + (quantity_input.value - quantity);
-          items_in_cart = quantity + (quantity_input.value - quantity);
+          cart[keys[i]]["quantity"] = quantity;
         }
         localStorage["cart"] = JSON.stringify(cart);
-        cart_items.textContent = items_in_cart;
-        display_cart();
+
+        if (items_in_cart > 0){
+          total -= price;
+          price = quantity*values[i]["price"]
+          total += price
+          line_text.textContent = values[i]["item_name"] + "...............$" + String(price.toFixed(2));
+          total_div.textContent = "Total: $" + total.toFixed(2);
+        } else {
+          cart_div.textContent = "Your cart is empty!";
+        }
+      }
+
+      quantity_input.addEventListener("change", function () {
+        update_quantity()
       });
+
+      let subtract_button = document.createElement("button")
+      subtract_button.textContent = "-"
+      subtract_button.addEventListener("click", function(){
+        if(Number(quantity_input.value) > quantity_input.min){
+          quantity_input.value = Number(quantity_input.value) - 1
+          update_quantity()
+        }
+      })
+
+      let add_button = document.createElement("button")
+      add_button.textContent = "+"
+      add_button.addEventListener("click", function(){
+        if(Number(quantity_input.value) < quantity_input.max){
+          quantity_input.value = Number(quantity_input.value) + 1
+          update_quantity()
+        }
+      })
+
+      line_div.appendChild(subtract_button);
       line_div.appendChild(quantity_input);
-      let line_text = document.createElement("div");
-      line_text.textContent =
-        values[i]["item_name"] + "...............$" + String(price.toFixed(2));
+      line_div.appendChild(add_button);
       line_div.appendChild(line_text);
       cart_div.appendChild(line_div);
+
       total += price;
       items_in_cart = total_quantity;
       cart_items.textContent = items_in_cart;
@@ -257,7 +299,6 @@ const name_input = document.getElementById("name_input");
 const price_input = document.getElementById("price_input");
 const quantity_input = document.getElementById("quantity_input");
 const image_input = document.getElementById("image_input");
-const submit_button = document.getElementById("add_product_button");
 const product_form = document.getElementById("product_form");
 
 product_form.addEventListener("submit", function (e) {
