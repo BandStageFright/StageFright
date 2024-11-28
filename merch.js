@@ -261,34 +261,34 @@ checkout_form.addEventListener("submit", async function (e) {
         alert("Your order could not be processed. An error has occured. Error: " + err);
         can_process = false;
       });
-    if (!can_process) {
-      return;
+    if (can_process) {
+      send_email(
+        "Order-" + email,
+        `
+            <p><strong>Your order has been recieved by Stage Fright!</strong></p>
+            <p><strong>Name:</strong> ${first_name + " " + last_name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Card #:</strong> ${credit_card_number}</p>
+            <p><strong>Address:</strong> ${address + ", " + city + ", " + state + ", " + country + ", " + zipcode}</p>
+            <p><strong>Your Order:</strong></p>
+            <p>${reciept}</p>
+            <p><strong>Total:</strong> ${total_price.toFixed(2)}</p>
+            <p>Please fill out our contact form if you have any questions/updates regarding your order. Thank for your purchase.</p>
+         `
+      );
+      setTimeout(function(){
+        localStorage.removeItem("cart");
+        checkout_form.submit()
+      }, 3000)
     }
   }
-  send_email(
-    "Order-" + email,
-    `
-        <p><strong>Your order has been recieved by Stage Fright!</strong></p>
-        <p><strong>Name:</strong> ${first_name + " " + last_name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Card #:</strong> ${credit_card_number}</p>
-        <p><strong>Address:</strong> ${address + ", " + city + ", " + state + ", " + country + ", " + zipcode}</p>
-        <p><strong>Your Order:</strong></p>
-        <p>${reciept}</p>
-        <p><strong>Total:</strong> ${total_price.toFixed(2)}</p>
-        <p>Please fill out our contact form if you have any questions/updates regarding your order. Thank for your purchase.</p>
-     `
-  );
-  setTimeout(function(){
-    localStorage.removeItem("cart");
-    checkout_form.submit()
-  }, 3000)
 });
 
 clear_button.addEventListener("click", function () {
   if (localStorage["cart"] != undefined) {
     localStorage.removeItem("cart");
   }
+  cart_items.textContent = "0"
   display_cart();
 });
 
