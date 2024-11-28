@@ -31,11 +31,12 @@ body {
 .cart_line {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 10px; 
 }
 
 .cart_line * {
   margin-right: 10px;
+  height: 25px;
 }
 
 #cart_button {
