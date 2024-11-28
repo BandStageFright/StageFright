@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import {get, set, update, ref, getDatabase} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import {get, set, update, ref, getDatabase, orderByChild, query} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,49 +37,53 @@ let current_id = ""
 let current_price = 0;
 
 window.addEventListener("load", function () {
-  get(ref(db, "products/tickets"))
-    .then(function (snapshot) {
-      let tickets_data = snapshot.val();
-      let keys = Object.keys(tickets_data);
-      let values = Object.values(tickets_data);
-      for (let i = 0; i < keys.length; i++) {
+  let data_query = query(ref(db, "products/tickets"), orderByChild("date"))
+  get(data_query).then(function (snapshot) {
+      snapshot.forEach(function(child) {
         let tour_listing = document.createElement("tr");
-        tour_listing.id = keys[i];
-
+        tour_listing.id = child.key;
         let tour_date = document.createElement("td");
-        tour_date.textContent = new Date(values[i]["date"]).toDateString();
+        tour_date.textContent = new Date(child.val()["date"]).toUTCString().slice(0, 16);
         tour_listing.appendChild(tour_date);
 
         let tour_location = document.createElement("td");
-        tour_location.textContent = values[i]["location"];
+        tour_location.textContent = child.val()["location"];
         tour_listing.appendChild(tour_location);
 
         let ticket = document.createElement("td");
         tour_listing.appendChild(ticket);
 
         let ticket_buy_button = document.createElement("button");
-        ticket_buy_button.textContent = "Buy Tickets";
         ticket_buy_button.classList.add("btn");
-        ticket_buy_button.classList.add("btn-primary");
-        ticket_buy_button.setAttribute("data-bs-toggle", "modal");
-        ticket_buy_button.setAttribute("data-bs-target", "#ticket_modal");
-        ticket_buy_button.addEventListener("click", function () {
-          ticket_date.innerHTML = "<strong>Date: </strong>" + new Date(values[i]["date"]).toDateString();
-          ticket_location.innerHTML = "<strong>Location: </strong>" + values[i]["location"];
-          ticket_price.innerHTML = "<strong>Price: </strong> $" + Number(values[i]["price"]).toFixed(2) + "/ea.";
-          ticket_quantity.value = 1;
-          current_id = keys[i]
-          current_price = values[i]["price"];
-          total.innerHTML = "<strong>Total: $</strong>" + Number(values[i]["price"]).toFixed(2);
-        });
+        ticket_buy_button.style.width = "100%"
+        if(child.val()["quantity"] > 0 && new Date() < new Date(child.val()["date"])) {
+            ticket_buy_button.classList.add("btn-primary");
+            ticket_buy_button.textContent = "Buy Tickets (" + child.val()["quantity"] +" left)";
+            ticket_buy_button.setAttribute("data-bs-toggle", "modal");
+            ticket_buy_button.setAttribute("data-bs-target", "#ticket_modal");
+            ticket_buy_button.addEventListener("click", function () {
+                ticket_date.innerHTML = "<strong>Date: </strong>" + new Date(child.val()["date"]).toUTCString().slice(0, 16);
+                ticket_location.innerHTML = "<strong>Location: </strong>" + child.val()["location"];
+                ticket_price.innerHTML = "<strong>Price: </strong> $" + Number(child.val()["price"]).toFixed(2) + "/ea.";
+                ticket_quantity.value = 1;
+                current_id = keys[i]
+                current_price = child.val()["price"];
+                total.innerHTML = "<strong>Total: $</strong>" + Number(child.val()["price"]).toFixed(2);
+            });
+        } else {
+            ticket_buy_button.classList.add("btn-danger");
+            ticket_buy_button.textContent = "Sold Out!";
+            ticket_buy_button.addEventListener("click", function () {
+                alert("This event is sold out. Sorry!")
+            });
+        }
         ticket.appendChild(ticket_buy_button);
         tour_dates_body.appendChild(tour_listing);
-      }
     })
-    .catch(function (err) {
-      alert("Error: " + err);
-    });
-});
+}).catch(function (err) {
+    alert("Error: " + err);
+  });   
+})
 
 function update_total() {
   let price = current_price * Number(ticket_quantity.value)
@@ -134,7 +138,7 @@ ticket_quantity_subtract_button.addEventListener("click", function () {
           let ticket_data = snapshot.val();
           if (requested_quantity <= ticket_data["quantity"]) {
             total_cost = requested_quantity * ticket_data["price"];
-            reciept = "Date: " + new Date(ticket_data["date"]).toDateString() + "<br>Location: " 
+            reciept = "Date: " + new Date(values[i]["date"]).toUTCString().slice(0, 16) + "<br>Location: " 
             + ticket_data["location"] 
             + "<br>Number of Tickets: " + requested_quantity 
             update(ref(db, "products/tickets/" + current_id), {
