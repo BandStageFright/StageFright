@@ -3,86 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merch - Stage Fright</title>
+    <title>Merch | Stage Fright</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js" defer></script>
+    <script src="merch.js" type="module" defer></script>
+    <script src="load.js" defer></script>
 </head>
-<body>
 
+<body>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Stage Fright</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="tickets.html">Tour Dates</a></li>
-                <li class="nav-item"><a class="nav-link" href="merch.html">Merch</a></li>
-                <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="navbar"></div>
 
 <!-- Merch Section -->
 <section id="merch" class="py-5">
     <div class="container">
         <h2 class="text-center mb-4">Merchandise</h2>
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="assets/images/tshirt.jpg" alt="Band T-Shirt" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Band T-Shirt</h5>
-                        <p class="card-text">$25.00</p>
-                        <a href="checkout.html" class="btn btn-primary">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="assets/images/hat.jpg" alt="Band Hat" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Band Hat</h5>
-                        <p class="card-text">$15.00</p>
-                        <a href="checkout.html" class="btn btn-primary">Buy Now</a>
-                    </div>
-                </div>
-            </div>
+            <div id="col1" class="col-md-4"></div>
+            <div id="col2" class="col-md-4"></div>
+            <div id="col3" class="col-md-4"></div>
         </div>
     </div>
 </section>
 
-<!-- Footer with Contact Us Form -->
-<footer class="bg-dark text-white text-center p-3">
-    <h5>Contact Us</h5>
-    <form action="#" method="POST" class="text-left container" style="max-width: 60%; margin: 0 auto;">
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="text" class="form-control" id="subject" name="subject" required>
-        </div>
-        <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
-    <p class="mt-3">© 2024 Stage Fright. All Rights Reserved.</p>
-</footer>
+<!-- Cart Button -->
+<button type="button" id="cart_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cart_modal" style="z-index: 2;">
+    <i class="bi bi-basket2-fill" style="font-size: 30px;"></i>
+    <div id="cart_items">0</div>
+</button>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Cart Modal -->
+<div class="modal fade" id="cart_modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="cart_modal_label">My Cart</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" style="margin: 10px;">
+                <div class="form_header">Your Cart</div>
+                <div id="cart"></div>
+                <hr>
+                <form id="checkout_form" class="mb-3">
+                    <div id="personal_information">
+                        <div class="form_header">Personal Information</div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" id="first_name" class="form-control" placeholder="First name" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="last_name" class="form-control" placeholder="Last name" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="billing_address">
+                        <div class="form_header">Billing Address</div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-sm-9">
+                                <input type="number" id="credit_card_number" class="form-control" placeholder="Credit Card #" required>
+                            </div>
+                            <div class="col-sm">
+                                <input type="number" id="ccv" class="form-control" placeholder="CCV" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="address" class="form-control" placeholder="Address" required>
+                        </div>
+                        <div class="row g-4 mb-3">
+                            <div class="col-sm-7">
+                                <input type="text" id="city" class="form-control" placeholder="City" required>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" id="state" class="form-control" placeholder="State" required>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" id="zipcode" class="form-control" placeholder="Zip" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="country" class="form-control" id="country" placeholder="Country" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="clear_button" class="btn btn-danger" data-bs-dismiss="modal">Clear Cart</button>
+                <button type="submit" form="checkout_form" id="checkout_button" class="btn btn-primary">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<!-- Footer -->
+<div id="footer"></div>
 </body>
 </html>

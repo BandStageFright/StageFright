@@ -3,39 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stage Fright - Official Website</title>
+    <title>Stage Fright</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="load.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">Stage Fright</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="tickets.html">Tour Dates</a></li>
-                <li class="nav-item"><a class="nav-link" href="merch.html">Merch</a></li>
-                <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="navbar"></div>
 
 <!-- Hero Section -->
 <section class="hero bg-primary py-5">
+    <div class="banner">
+      <div class="moving-container">
+        <img src="" alt="Moving Image 1" class="moving-image">
+        <img src="" alt="Moving Image 2" class="moving-image">
+        <img src="" alt="Moving Image 3" class="moving-image">
+        <img src="" alt="Moving Image 1 Duplicate" class="moving-image">
+        <img src="" alt="Moving Image 2 Duplicate" class="moving-image">
+        <img src="" alt="Moving Image 3 Duplicate" class="moving-image">
+      </div>
+    </div>
     <div class="container text-center text-white">
+      <div class="content">
         <h1>Welcome to Stage Fright</h1>
         <p>Your go-to destination for music, tours, and merch!</p>
-        <a href="#about" class="btn btn-light">Learn More</a>
+      </div>
     </div>
 </section>
-
 
 <!-- About Section -->
 <section id="about" class="py-5">
@@ -44,14 +41,17 @@
         <p>Stage Fright is a high-energy rock band that thrives on pushing boundaries and breaking the silence with their electrifying performances. Each member brings a unique, fearless style, from intense guitar riffs to powerful rhythms that leave a lasting impact. With their unapologetic sound and unrelenting passion, StageFright is here to dominate the stage and captivate every audience.</p>
         <div class="row">
             <div class="col-md-4">
+                <img alt="Image of Jack Harper"/>
                 <h5>Jack Harper - Lead Vocalist</h5>
                 <p>Jack brings electrifying energy to the stage with his masterful guitar solos. He is Known for his dynamic performances and creative riffs, he is the heart of Stage Fright's sound.</p>
             </div>
             <div class="col-md-4">
+                <img alt="Image of Maya Kapoor"/>
                 <h5>Maya Kapoor - Guitarist</h5>
                 <p>Maya’s rhythm guitar skills add depth and harmony to the band's music. Her ability to infuse modern sounds with soulful melodies sets the band apart.</p>
             </div>
             <div class="col-md-4">
+                <img alt="Image of Sofia Ramirez"/>
                 <h5>Sofia Ramirez - Drummer</h5>
                 <p>Sofia keeps the band’s beats alive with her vibrant drumming. Her energetic rhythms and precise timing fuel every performance, captivating the crowd.</p>
             </div>
@@ -59,33 +59,41 @@
     </div>
 </section>
 
-<!-- Footer with Contact Us Form -->
-<footer class="bg-dark text-white text-center p-3">
-    <h5>Contact Us</h5>
-    <form action="#" method="POST" class="text-left container" style="max-width: 60%; margin: 0 auto;">
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+<!-- Merch Section -->
+<section id="special-message" class="py-5">
+    <div class="container d-flex align-items-center special-section">
+        <div class="trapezoid"></div>
+        <div class="content-wrapper">
+            <div class="message">
+                <h2>Exclusive Merch Available!</h2>
+                <p>Get your hands on our limited edition merch and stand out at every event. From t-shirts to accessories, we've got something special for every fan.</p>
+                <a href="merch.html" class="btn btn-primary mt-3">Buy Merch</a>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+            <div class="merch-image">
+                <img src="assets/images/merch.jpg" alt="Exclusive Merch" class="img-fluid rounded">
             </div>
         </div>
-        <div class="mb-3">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="text" class="form-control" id="subject" name="subject" required>
-        </div>
-        <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
-    <p class="mt-3">© 2024 Stage Fright. All Rights Reserved.</p>
-</footer>
+    </div>
+</section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Ticket Section -->
+<section id="special-message" class="py-5">
+    <div class="container d-flex align-items-center special-section">
+        <div class="content-wrapper">
+            <div class="message">
+                <h2>Get Your Tour Tickets Now!</h2>
+                <p>Don't miss out on the live energy of Stage Fright's upcoming tour. Secure your spot and experience an unforgettable night of music and excitement!</p>
+                <a href="tickets.html" class="btn btn-primary mt-3">Buy Tickets</a>
+            </div>
+            <div class="tickets-image">
+                <img src="assets/images/tickets.jpg" alt="Tour Tickets" class="img-fluid rounded">
+            </div>
+        </div>
+        <div class="trapezoid-right"></div>
+    </div>
+</section>
+
+<!-- Footer -->
+<div id="footer"></div>
 </body>
 </html>
