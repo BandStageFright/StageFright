@@ -3,14 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tour Dates - Stage Fright</title>
+    <title>Tour Dates | Stage Fright</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
     <script src="load.js" defer></script>
+    <script src="https://smtpjs.com/v3/smtp.js" defer></script>
     <script src="tickets.js" type="module" defer></script>
   </head>
   <body>
@@ -21,6 +25,9 @@
     <section id="tour_dates" class="py-5 bg-light">
       <div class="container">
         <h2 class="text-center mb-4">Tour Dates</h2>
+        <div class="text-center mb-4">
+          All events start at 7:00 PM in the location's local time zone.
+        </div>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -34,106 +41,113 @@
       </div>
     </section>
 
-
     <!-- Ticket Modal -->
-<div class="modal fade" id="ticket_modal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
+    <div class="modal fade" id="ticket_modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
           <div class="modal-header">
-              <h1 class="modal-title fs-5" id="cart_modal_label">Buy Tickets</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <h1 class="modal-title fs-5" id="cart_modal_label">Buy Tickets</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
           </div>
-          <div class="modal-body" style="margin: 10px;">
-              <div class="form_header">Ticket Information</div>
-              <div id="tickets">
-                <div id="tour_date"><strong>Date: </strong>???</div>
-                <div id="tour_location"><strong>Location: </strong>???</div>
-                <div id="ticket_quantitty">
-                  <strong>Number of tickets:</strong>
-                  <button>-</button>
-                  <input type="text">
-                  <button>+</button>
-                </div>
-                <div id="total"><strong>Total: </strong>$???</div>
+          <div class="modal-body" style="margin: 10px">
+            <div class="form_header">Ticket Information</div>
+            <div id="tickets">
+              <div id="ticket_date"><strong>Date: </strong>???</div>
+              <div id="ticket_location"><strong>Location: </strong>???</div>
+              <div id="ticket_price"><strong>Price: </strong>$???/ea.</div>
+              <div id="ticket_number">
+                <strong>Number of tickets:</strong>
+                <button id="ticket_quantity_subtract_button">-</button>
+                <input id="ticket_quantity" type="number" min="1" max="100" />
+                <button id="ticket_quantity_add_button">+</button>
               </div>
-              <hr>
-              <form id="checkout_form" class="mb-3">
-                  <div id="personal_information">
-                      <div class="form_header">Personal Information</div>
-                      <div class="row mb-3">
-                          <div class="col">
-                              <input type="text" id="first_name" class="form-control" placeholder="First name" required>
-                          </div>
-                          <div class="col">
-                              <input type="text" id="last_name" class="form-control" placeholder="Last name" required>
-                          </div>
-                      </div>
-                      <div class="mb-3">
-                          <input type="email" class="form-control" id="email" placeholder="Email Address" required>
-                      </div>
+              <div id="total"><strong>Total: </strong>$???</div>
+            </div>
+            <hr />
+            <form id="checkout_form" class="mb-3">
+              <div id="personal_information">
+                <div class="form_header">Personal Information</div>
+                <div class="row mb-3">
+                  <div class="col">
+                    <input
+                      type="text"
+                      id="first_name"
+                      class="form-control"
+                      placeholder="First name"
+                      required
+                    />
                   </div>
-                  <hr>
-                  <div id="billing_info">
-                      <div class="form_header">Billing Information</div>
-                      <div class="row g-2 mb-3">
-                          <div class="col-sm-9">
-                              <input type="number" id="credit_card_number" class="form-control" placeholder="Credit Card #" required>
-                          </div>
-                          <div class="col-sm">
-                              <input type="number" id="ccv" class="form-control" placeholder="CCV" required>
-                          </div>
-                      </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      id="last_name"
+                      class="form-control"
+                      placeholder="Last name"
+                      required
+                    />
                   </div>
-              </form>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Email Address"
+                    required
+                  />
+                </div>
+              </div>
+              <hr />
+              <div id="billing_info">
+                <div class="form_header">Billing Information</div>
+                <div class="row g-2 mb-3">
+                  <div class="col-sm-9">
+                    <input
+                      type="number"
+                      id="credit_card_number"
+                      class="form-control"
+                      placeholder="Credit Card #"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm">
+                    <input
+                      type="number"
+                      id="ccv"
+                      class="form-control"
+                      placeholder="CCV"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
-              <button type="button" id="clear_button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" form="checkout_form" id="order_button" class="btn btn-primary">Checkout</button>
+            <button
+              type="button"
+              id="clear_button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              form="checkout_form"
+              id="checkout_button"
+              class="btn btn-primary"
+            >
+              Checkout
+            </button>
           </div>
+        </div>
       </div>
-  </div>
-</div>
-
-
-     <!-- Add Product Button -->
-<button type="button" id="open_product_add" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_product_modal">
-  Add tour to firebase
-</button>
-
-<!-- Add Product Modal -->
-<div class="modal fade" id="add_product_modal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h1 class="modal-title fs-5" id="cart_modal_label">Add a product to firebase</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body" style="margin: 10px;">
-              <form id="product_form">
-                  <div class="form_header">Tour Details</div>
-                  <div class="mb-3">
-                      <input type="text" class="form-control" id="id_input" placeholder="Tour ID" required>
-                  </div>
-                  <div class="mb-3">
-                      <input type="date" class="form-control" id="date_input" placeholder="Tour Date" required>
-                  </div>
-                  <div class="mb-3">
-                      <input type="text" class="form-control" id="location_input" placeholder="Tour Location" required>
-                  </div>
-                  <div class="mb-3">
-                    <input type="text" class="form-control" id="price_input" placeholder="Ticket Price" required>
-                  </div>
-                  <div class="mb-3">
-                      <input type="text" class="form-control" id="quantity_input" placeholder="Ticket Quantity" required>
-                  </div>
-              </form>
-          </div>
-          <div class="modal-footer">
-              <button type="submit" form="product_form" id="add_product_button" class="btn btn-primary" onsubmit="function foo(){e.preven}">Add</button>
-          </div>
-      </div>
-  </div>
-</div>
+    </div>
 
     <!-- Footer -->
     <div id="footer"></div>
