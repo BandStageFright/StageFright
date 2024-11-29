@@ -87,7 +87,7 @@ window.addEventListener("load", function () {
           ticket_buy_button.setAttribute("data-bs-target", "#ticket_modal");
           ticket_buy_button.addEventListener("click", function () {
             // Updates global variables
-            current_id = keys[i];
+            current_id = child.key;
             current_price = child.val()["price"];
             // Updates Elements
             ticket_date.innerHTML = "<strong>Date: </strong>" + new Date(child.val()["date"]).toUTCString().slice(0, 16);
