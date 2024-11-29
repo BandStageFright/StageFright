@@ -101,46 +101,6 @@
     </div>
 </div>
   
- <!-- Add Product Button -->
-<button type="button" id="open_product_add" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_product_modal">
-    Add a product to firebase
-</button>
-
-<!-- Add Product Modal -->
-<div class="modal fade" id="add_product_modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="cart_modal_label">Add a product to firebase</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body" style="margin: 10px;">
-                <form id="product_form">
-                    <div class="form_header">Product Details</div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="id_input" placeholder="Product ID" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="name_input" placeholder="Product Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="price_input" placeholder="Product Price" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="quantity_input" placeholder="Product Quantity" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="image_input" placeholder="Product Image Link">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" form="product_form" id="add_product_button" class="btn btn-primary" onsubmit="function foo(){e.preven}">Add</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Footer -->
 <div id="footer"></div>
 </body>
