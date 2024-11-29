@@ -1,5 +1,6 @@
 .form_header {
-  font-weight: 600;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: normal;
   margin-bottom: 6px;
 }
 
@@ -75,7 +76,7 @@ i:hover{
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'roboto', sans-serif;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -151,20 +152,28 @@ body {
   }
 }
 
+
 .hero {
-  background: url("assets/images/band-banner.jpg") no-repeat center center;
-  background-size: cover;
+  background-color: black; 
   padding: 100px 0;
-  color: white;
+  color: #FAA0A0; 
+  text-align: center;
 }
 
 .hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 4rem;
+  letter-spacing: 1.5px;
+  color: #FAA0A0; 
+  background-color: black;
 }
+
 
 .hero p {
   font-size: 1.5rem;
+  color: #FAA0A0;
 }
+
 
 .special-section {
     display: flex;
@@ -218,7 +227,6 @@ footer {
 }
 
 footer a {
-  color: white;
-  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 1.1em;
 }
