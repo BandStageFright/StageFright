@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);
+
 .form_header {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: normal;
@@ -8,6 +10,9 @@ html,
 body {
   height: 100%;
   margin: 0;
+  text-align: center;
+  color: #FAA0A0;
+  background: linear-gradient(to bottom, #9E0021, black);
 }
 
 a:hover{
@@ -63,6 +68,7 @@ i:hover{
   margin-right: 5px;
 }
 
+/* Merch */
 .card-title{
   white-space: nowrap;
   overflow: hidden;
@@ -117,6 +123,7 @@ body {
   top: 0;
   left: 0;
 }
+
 
 .main-content {
   flex-grow: 1;
@@ -227,6 +234,8 @@ footer {
 }
 
 footer a {
+  color: white;
+  text-decoration: none;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.1em;
 }
