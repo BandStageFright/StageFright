@@ -258,12 +258,12 @@ checkout_form.addEventListener("submit", async function (e) {
   let state = document.getElementById("state").value;
   let zipcode = document.getElementById("zipcode").value;
   let country = document.getElementById("country").value;
-  // Generates reciept of the order
+  // Generates receipt of the order
   let cart = JSON.parse(localStorage["cart"]);
   let keys = Object.keys(cart);
   let values = Object.values(cart);
   let can_process = true;
-  let reciept = "";
+  let receipt = "";
   let total_price = 0;
   for (let i = 0; i < keys.length; i++) {
     await get(ref(db, "products/merch/" + keys[i]))
@@ -272,7 +272,7 @@ checkout_form.addEventListener("submit", async function (e) {
         if (values[i]["quantity"] <= product_data["quantity"]) {
           let cost = values[i]["quantity"] * values[i]["price"];
           total_price += cost;
-          reciept += product_data["item_name"] +" (x" + values[i]["quantity"] + "): $" + cost.toFixed(2) + "<br>";
+          receipt += product_data["item_name"] +" (x" + values[i]["quantity"] + "): $" + cost.toFixed(2) + "<br>";
           update(ref(db, "products/merch/" + keys[i]), {
             quantity: product_data["quantity"] - values[i]["quantity"]
           });
@@ -299,7 +299,7 @@ checkout_form.addEventListener("submit", async function (e) {
             <p><strong>Card #:</strong> ${credit_card_number}</p>
             <p><strong>Address:</strong> ${address + ", " + city + ", " + state + ", " + country + ", " + zipcode}</p>
             <p><strong>Your Order:</strong></p>
-            <p>${reciept}</p>
+            <p>${receipt}</p>
             <p><strong>Total:</strong> ${total_price.toFixed(2)}</p>
             <p>Please fill out our contact form if you have any questions/updates regarding your order. Thank for your purchase.</p>
          `

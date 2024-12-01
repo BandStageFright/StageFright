@@ -1,129 +1,64 @@
 @import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);
 
+:root {
+  --light-red: #b11226;
+  --obsidian-black: #1b1b1b;
+  --gold: #daa520;
+  --deep-red: #64000f;
+  --smoke-gray: #585858;
+  --midnight-black: #00040d;
+}
+
 .form_header {
-  font-family: 'Bebas Neue', sans-serif;
   font-weight: normal;
   margin-bottom: 6px;
 }
 
-html,
+html {
+  min-height: 100%;
+}
+
 body {
   height: 100%;
   margin: 0;
   text-align: center;
-  color: #FAA0A0;
-  background: linear-gradient(to bottom, #9E0021, black);
+  background: linear-gradient(
+    to bottom,
+    var(--midnight-black), var(--deep-red)
+  );
+  color: var(--light-red);
+  font-size: large;
 }
 
-a:hover{
+body * {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  color: var(--light-red);
+}
+
+a:hover {
   transition: ease 0.25s;
-  color: rgba(233, 83, 83, 0.851);
+  color: var(--light-red);
 }
 
-i:hover{
+i:hover {
   transition: ease 0.25s;
-  color: rgba(233, 83, 83, 0.851);
+  color: var(--light-red);
 }
 
-#admin_console {
-  border: solid 5px black; 
-  width: 250px; 
-  display: flex; 
-  justify-content: center; 
-  margin-bottom: 530px; 
-  align-self: center; 
-  position: relative;
-}
-
-#login_form{
-  z-index: 2; 
-  position: absolute; 
-  align-self: center; 
-  background-color:rgba(26, 24, 24, 0.532); 
-  width: 100%; 
-  height: 100%; 
-  top:0; 
-  align-content: center; 
-  text-align: center;
-}
-
-#tickets *{
-  height: 25px;
-  align-items: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-#ticket_number{
-  display: flex;
-  align-content: center;
-}
-
-#ticket_quantity{
-  width: 50px;
-}
-
-#ticket_number *{
-  margin-right: 5px;
+body,
+html {
+  margin: 0;
+  padding: 0;
 }
 
 /* Merch */
-.card-title{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.card-img-top{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-body {
-  font-family: 'roboto', sans-serif;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.cart_line {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px; 
-}
-
-.cart_line * {
-  margin-right: 10px;
-  height: 25px;
-}
-
-#cart_button {
-  width: 75px;
-  height: 75px;
-  position: fixed;
-  border-radius: 100px;
-  bottom: 7vw;
-  right: 3vw;
-  transition: ease-in;
-}
-
-#cart_button:hover {
-  color: rgba(255, 255, 255, 1);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
-}
-
-#cart_items {
-  position: absolute;
-  background-color: crimson;
-  width: 25px;
-  height: 25px;
-  border-radius: 100px;
-  top: 0;
-  left: 0;
-}
-
 
 .main-content {
   flex-grow: 1;
@@ -135,19 +70,23 @@ body {
   width: 100%;
   height: 60px;
   margin-top: -50px;
-  margin-bottom: 20px;
-  background-color: #000;
+  padding-top: 20px;
 }
 
 .moving-container {
   display: flex;
   width: calc(200%);
   animation: move-right 20s linear infinite;
+  background-color: var(--midnight-black);
+  align-content: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .moving-image {
   width: 16.66%;
-  height: auto;
+  text-align: center;
+  color: var(--gold) !important;
 }
 
 @keyframes move-right {
@@ -159,74 +98,87 @@ body {
   }
 }
 
-
 .hero {
-  background-color: black; 
-  padding: 100px 0;
-  color: #FAA0A0; 
+  background-color: rgba(0, 0, 0, 0);
+  padding: 50px 0;
+  color: var(--deep-red);
   text-align: center;
 }
 
 .hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 4rem;
   letter-spacing: 1.5px;
-  color: #FAA0A0; 
-  background-color: black;
+  color: var(--light-red);
+  background-color: rgba(0, 0, 0, 0);
 }
-
 
 .hero p {
   font-size: 1.5rem;
-  color: #FAA0A0;
+  color: var(--gold);
 }
 
+#about {
+  background-color: var(--obsidian-black);
+  color: var(--gold);
+  margin: 20px;
+  border: 5px solid transparent;
+  border-image: linear-gradient(to bottom, var(--light-red), var(--gold)) 1;
+  border-radius: 25px;
+}
+
+#about:hover {
+  box-shadow: 0 0 30px rgba(255, 70, 0, 0.65);
+}
 
 .special-section {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .trapezoid {
-    width: 100px;
-    height: 200px;
-    background: linear-gradient(to bottom right, #343a40 50%, #555 50%);
-    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
-    flex-shrink: 0;
+  width: 100px;
+  height: 200px;
+  background: linear-gradient(
+    to bottom right,
+    var(--deep-red) 50%,
+    var(--gold) 50%
+  );
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+  flex-shrink: 0;
 }
 
 .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
 }
 
 .message {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.merch-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+  background-color: var(--obsidian-black);
+  color: var(--gold);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .trapezoid-right {
-    width: 100px;
-    height: 200px;
-    background: linear-gradient(to bottom left, #343a40 50%, #555 50%);
-    clip-path: polygon(100% 0, 0 0, 20% 100%, 100% 100%);
-    flex-shrink: 0;
+  width: 100px;
+  height: 200px;
+  background: linear-gradient(
+    to bottom left,
+    var(--deep-red) 50%,
+    var(--gold) 50%
+  );
+  clip-path: polygon(100% 0, 0 0, 20% 100%, 100% 100%);
+  flex-shrink: 0;
 }
 
 footer {
-  background-color: #343a40;
+  background-color: var(--obsidian-black);
   color: white;
   text-align: center;
   width: 100%;
@@ -236,6 +188,6 @@ footer {
 footer a {
   color: white;
   text-decoration: none;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 1.1em;
 }

@@ -141,9 +141,9 @@ checkout_form.addEventListener("submit", async function (e) {
   let last_name = document.getElementById("last_name").value;
   let email = document.getElementById("email").value;
   let credit_card_number = document.getElementById("credit_card_number").value;
-  // Generates reciept of the order
+  // Generates receipt of the order
   let requested_quantity = Number(ticket_quantity.value);
-  let reciept = "";
+  let receipt = "";
   let total_cost = 0;
   let can_process = true; // Flag to check that the order can go through
   await get(ref(db, "products/tickets/" + current_id))
@@ -151,7 +151,7 @@ checkout_form.addEventListener("submit", async function (e) {
       let ticket_data = snapshot.val();
       if (requested_quantity <= ticket_data["quantity"]) {
         total_cost = requested_quantity * ticket_data["price"];
-        reciept = "Date: " + new Date(values[i]["date"]).toUTCString().slice(0, 16) + "<br>Location: " + ticket_data["location"] + "<br>Number of Tickets: " + requested_quantity;
+        receipt = "Date: " + new Date(values[i]["date"]).toUTCString().slice(0, 16) + "<br>Location: " + ticket_data["location"] + "<br>Number of Tickets: " + requested_quantity;
         update(ref(db, "products/tickets/" + current_id), {
           quantity: ticket_data["quantity"] - requested_quantity,
         });
@@ -176,7 +176,7 @@ checkout_form.addEventListener("submit", async function (e) {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Card #:</strong> ${credit_card_number}</p>
         <p><strong>Your Ticket Order:</strong></p>
-        <p>${reciept}</p>
+        <p>${receipt}</p>
         <p><strong>Total:</strong> ${total_cost.toFixed(2)}</p>
         <p>Please fill out our contact form if you have any questions/updates regarding your ticket order. Thank for your purchase.</p>
      `
