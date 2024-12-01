@@ -63,7 +63,7 @@ function display_cart() {
       line_div.classList.add("cart_line");
 
       let line_text = document.createElement("div");
-      line_text.textContent = values[i]["item_name"] + ": $" + String(price.toFixed(2));
+      line_text.textContent = values[i]["item_name"] + "...............$" + String(price.toFixed(2));
 
       let quantity_input = document.createElement("input");
       quantity_input.min = 0;
@@ -91,7 +91,7 @@ function display_cart() {
           total -= price;
           price = quantity*values[i]["price"]
           total += price
-          line_text.textContent = values[i]["item_name"] + ": $" + String(price.toFixed(2));
+          line_text.textContent = values[i]["item_name"] + "...............$" + String(price.toFixed(2));
           total_div.textContent = "Total: $" + total.toFixed(2);
         } else {
           cart_div.textContent = "Your cart is empty!";
@@ -103,7 +103,6 @@ function display_cart() {
       });
 
       let subtract_button = document.createElement("button")
-      subtract_button.type = "button"
       subtract_button.textContent = "-"
       subtract_button.addEventListener("click", function(){
         if(Number(quantity_input.value) > quantity_input.min){
@@ -113,7 +112,6 @@ function display_cart() {
       })
 
       let add_button = document.createElement("button")
-      add_button.type = "button"
       add_button.textContent = "+"
       add_button.addEventListener("click", function(){
         if(Number(quantity_input.value) < quantity_input.max){
