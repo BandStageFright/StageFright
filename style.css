@@ -1,25 +1,49 @@
+/*---Sitewide---*/
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #333;
+}
+
+body *{
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.a{
+  color: #f9ecec !important;
+}
+
+a:hover{
+  transition: ease 0.25s !important;
+  color: rgba(233, 83, 83, 0.851) !important;
+}
+
 .form_header {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: normal;
   margin-bottom: 6px;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
+h1{
+  font-family: 'Bebas Neue', sans-serif;
+  color: #FAA0A0;
 }
 
-a:hover{
-  transition: ease 0.25s;
-  color: rgba(233, 83, 83, 0.851);
+h5{
+  color: #FAA0A0;
 }
 
-i:hover{
-  transition: ease 0.25s;
-  color: rgba(233, 83, 83, 0.851);
+#checkout_form{
+  background-color: #f8f9fa00;
+  border: none;
+  box-shadow: none;
+  margin-top: 0px;
 }
-
+/*---Administator Console Page---*/
 #admin_console {
   border: solid 5px black; 
   width: 250px; 
@@ -41,7 +65,96 @@ i:hover{
   align-content: center; 
   text-align: center;
 }
+/*---Home Page---*/
+.hero {
+  background-color: black; 
+  padding: 100px 0;
+  color: #FAA0A0; 
+  text-align: center;
+}
 
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 1.5px;
+  color: #FAA0A0; 
+  background-color: black;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  color: #FAA0A0;
+}
+
+#welcome{
+  background-image: url("https://images.unsplash.com/photo-1719924338653-e2baca7fb563?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-position: center;
+}
+
+.special-section {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trapezoid {
+    width: 100px;
+    height: 200px;
+    background: linear-gradient(to bottom right, #343a40 50%, #555 50%);
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+    flex-shrink: 0;
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 30px;
+  padding: 0px !important;
+  margin-top: -100px;
+}
+
+.moving_container {
+  text-align: center;
+  display: flex;
+  width: calc(200%);
+  animation: move-right 20s linear infinite;
+}
+
+.moving_container *{
+  width: 15%;
+  height: 30px;
+  font-size: medium !important;
+  color: #FAA0A0;
+}
+
+@keyframes move-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+.trapezoid-right {
+  width: 100px;
+  height: 200px;
+  background: linear-gradient(to bottom left, #343a40 50%, #555 50%);
+  clip-path: polygon(100% 0, 0 0, 20% 100%, 100% 100%);
+  flex-shrink: 0;
+}
+/*---Tour Dates Page---*/
 #tickets *{
   height: 25px;
   align-items: center;
@@ -62,6 +175,11 @@ i:hover{
 #ticket_number *{
   margin-right: 5px;
 }
+/*---Merch Page---*/
+.card{
+  background-color: #232527;
+  color: #f8f9fa;
+}
 
 .card-title{
   white-space: nowrap;
@@ -76,7 +194,7 @@ i:hover{
 }
 
 body {
-  font-family: 'roboto', sans-serif;
+  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -94,6 +212,8 @@ body {
 }
 
 #cart_button {
+  background-color: #232527;
+  border-color: #232527;
   width: 75px;
   height: 75px;
   position: fixed;
@@ -117,63 +237,44 @@ body {
   top: 0;
   left: 0;
 }
-
-.main-content {
-  flex-grow: 1;
-}
-
-.banner {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 60px;
-  margin-top: -50px;
+/*---Contact Page---*/
+h1 {
+  text-align: center;
+  padding-top: 20px;
   margin-bottom: 20px;
-  background-color: #000;
 }
 
-.moving-container {
-  display: flex;
-  width: calc(200%);
-  animation: move-right 20s linear infinite;
+form {
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.moving-image {
-  width: 16.66%;
-  height: auto;
-}
-
-@keyframes move-right {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.form-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 
 .hero {
-  background-color: black; 
+  background: url("assets/images/band-banner.jpg") no-repeat center center;
+  background-size: cover;
   padding: 100px 0;
-  color: #FAA0A0; 
-  text-align: center;
+  color: white;
 }
 
 .hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
   font-size: 4rem;
-  letter-spacing: 1.5px;
-  color: #FAA0A0; 
-  background-color: black;
 }
 
 
 .hero p {
   font-size: 1.5rem;
-  color: #FAA0A0;
 }
-
 
 .special-section {
     display: flex;
@@ -190,43 +291,53 @@ body {
     flex-shrink: 0;
 }
 
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex-grow: 1;
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
 }
 
 .message {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.merch-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+.container {
+  max-width: 60%;
+  margin: 10px auto;
 }
 
-.trapezoid-right {
-    width: 100px;
-    height: 200px;
-    background: linear-gradient(to bottom left, #343a40 50%, #555 50%);
-    clip-path: polygon(100% 0, 0 0, 20% 100%, 100% 100%);
-    flex-shrink: 0;
-}
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%;
+  }
 
+  h1 {
+    font-size: 2rem;
+  }
+
+  .form-label {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+/*---Footer---*/
 footer {
-  background-color: #343a40;
+  background-color: #333;
   color: white;
-  text-align: center;
+  text-align: center !important;
   width: 100%;
   position: absolute;
 }
 
 footer a {
-  font-family: 'Bebas Neue', sans-serif;
+  color: white;
+  text-decoration: none;
   font-size: 1.1em;
 }
