@@ -10,7 +10,7 @@ body {
   margin: 0;
   text-align: center;
   color: #FAA0A0;
-  background: linear-gradient(to bottom, green, #9E0021, black);
+  background: linear-gradient(to bottom, #9E0021, black);
 }
 
 a:hover{
@@ -211,7 +211,6 @@ body {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    background: linear-gradient(to bottom,#9E0021, black);
 }
 
 .trapezoid-right {
