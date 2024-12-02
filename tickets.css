@@ -3,26 +3,26 @@ hr {
 }
 
 th {
-   background-color: var(--obsidian-black) !important;
-   color: var(--white) !important;
+  background-color: var(--obsidian-black) !important;
+  color: var(--white) !important;
 }
 
-td{
-   background-color: var(--obsidian-black) !important;
-   color: var(--white) !important;
+td {
+  background-color: var(--obsidian-black) !important;
+  color: var(--white) !important;
 }
 
-#date_table{
+#date_table {
   border: 5px solid var(--smoke-gray);
   border-image: linear-gradient(to bottom, var(--light-red), var(--gold)) 1;
 }
 
-#date_table *{
+#date_table * {
   border-bottom: 5px solid var(--smoke-gray);
 }
 
-#tour_dates_body *{
-  border: none
+#tour_dates_body * {
+  border: none;
 }
 
 #tickets * {
@@ -47,7 +47,7 @@ td{
   margin-right: 5px;
 }
 
-#ticket_quantity_add_button{
+#ticket_quantity_add_button {
   border: 2px solid black;
   border-radius: 100px;
   width: 25px;
@@ -55,7 +55,7 @@ td{
   font-size: small;
 }
 
-#ticket_quantity_subtract_button{
+#ticket_quantity_subtract_button {
   border: 2px solid black;
   border-radius: 100px;
   width: 25px;

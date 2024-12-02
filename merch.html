@@ -1,111 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Merch | Stage Fright</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="merch.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="merch.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js" defer></script>
     <script src="merch.js" type="module" defer></script>
     <script src="load.js" defer></script>
     <script src="navbar.js" defer></script>
-</head>
+  </head>
 
-<body >
-<!-- Navbar -->
-<div id="navbar"></div>
+  <body>
+    <!-- Navbar -->
+    <div id="navbar"></div>
 
-
-<!-- Merch Section -->
-<section id="merch" class="py-5">
-    <div class="container">
+    <!-- Merch Section -->
+    <section id="merch" class="py-5">
+      <div class="container">
         <h1 class="text-center">Merchandise</h1>
-        <h5 class="text-center mb-4">Purchase exclusive Stage Fright branded merch! Act fast, as each item has limited stock.</h5> 
+        <h5 class="text-center mb-4">
+          Purchase exclusive Stage Fright branded merch! Act fast, as each item
+          has limited stock.
+        </h5>
         <div class="row">
-            <div id="col1" class="col-md-4"></div>
-            <div id="col2" class="col-md-4"></div>
-            <div id="col3" class="col-md-4"></div>
+          <div id="col1" class="col-md-4"></div>
+          <div id="col2" class="col-md-4"></div>
+          <div id="col3" class="col-md-4"></div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Cart Button -->
-<button type="button" id="cart_button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#cart_modal" style="z-index: 2;">
-    <i class="bi bi-basket2-fill" style="font-size: 30px;"></i>
-    <div id="cart_items">0</div>
-</button>
+    <!-- Cart Button -->
+    <button
+      type="button"
+      id="cart_button"
+      class="btn btn-warning"
+      data-bs-toggle="modal"
+      data-bs-target="#cart_modal"
+      style="z-index: 2"
+    >
+      <i class="bi bi-basket2-fill" style="font-size: 30px"></i>
+      <div id="cart_items">0</div>
+    </button>
 
-<!-- Cart Modal -->
-<div class="modal fade" id="cart_modal" tabindex="-1" data-bs-theme="dark">
-    <div class="modal-dialog modal-dialog-scrollable">
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cart_modal" tabindex="-1" data-bs-theme="dark">
+      <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5 form_header" id="cart_modal_label">Order Summary</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body" style="margin: 10px;">
-                <div class="form_header">Your Cart</div>
-                <div id="cart"></div>
-                <hr>
-                <form id="checkout_form" class="mb-3">
-                    <div id="personal_information">
-                        <div class="form_header">Personal Information</div>
-                        <div class="row mb-3">
-                            <div class="col">
-                                <input type="text" id="first_name" class="form-control" placeholder="First name" required>
-                            </div>
-                            <div class="col">
-                                <input type="text" id="last_name" class="form-control" placeholder="Last name" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="Email Address" required>
-                        </div>
-                    </div>
-                    <hr>
-                    <div id="billing_address">
-                        <div class="form_header">Billing Address</div>
-                        <div class="row g-2 mb-3">
-                            <div class="col-sm-9">
-                                <input type="number" id="credit_card_number" class="form-control" placeholder="Credit Card #" required>
-                            </div>
-                            <div class="col-sm">
-                                <input type="number" id="ccv" class="form-control" placeholder="CCV" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" id="address" class="form-control" placeholder="Address" required>
-                        </div>
-                        <div class="row g-4 mb-3">
-                            <div class="col-sm-7">
-                                <input type="text" id="city" class="form-control" placeholder="City" required>
-                            </div>
-                            <div class="col-sm">
-                                <input type="text" id="state" class="form-control" placeholder="State" required>
-                            </div>
-                            <div class="col-sm">
-                                <input type="text" id="zipcode" class="form-control" placeholder="Zip" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" id="country" class="form-control" id="country" placeholder="Country" required>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="clear_button" class="btn btn-danger" data-bs-dismiss="modal">Clear Cart</button>
-                <button type="submit" form="checkout_form" id="checkout_button" class="btn btn-primary">Checkout</button>
-            </div>
+          <div class="modal-header">
+            <h2 class="modal-title fs-5 form_header" id="cart_modal_label">
+              Order Summary
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body" style="margin: 10px">
+            <div class="form_header">Your Cart</div>
+            <div id="cart"></div>
+            <hr />
+            <form id="checkout_form" class="mb-3">
+              <div id="personal_information">
+                <div class="form_header">Personal Information</div>
+                <div class="row mb-3">
+                  <div class="col">
+                    <input
+                      type="text"
+                      id="first_name"
+                      class="form-control"
+                      placeholder="First name"
+                      required
+                    />
+                  </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      id="last_name"
+                      class="form-control"
+                      placeholder="Last name"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Email Address"
+                    required
+                  />
+                </div>
+              </div>
+              <hr />
+              <div id="billing_address">
+                <div class="form_header">Billing Address</div>
+                <div class="row g-2 mb-3">
+                  <div class="col-sm-9">
+                    <input
+                      type="number"
+                      id="credit_card_number"
+                      class="form-control"
+                      placeholder="Credit Card #"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm">
+                    <input
+                      type="number"
+                      id="ccv"
+                      class="form-control"
+                      placeholder="CCV"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="address"
+                    class="form-control"
+                    placeholder="Address"
+                    required
+                  />
+                </div>
+                <div class="row g-4 mb-3">
+                  <div class="col-sm-7">
+                    <input
+                      type="text"
+                      id="city"
+                      class="form-control"
+                      placeholder="City"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm">
+                    <input
+                      type="text"
+                      id="state"
+                      class="form-control"
+                      placeholder="State"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm">
+                    <input
+                      type="text"
+                      id="zipcode"
+                      class="form-control"
+                      placeholder="Zip"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="country"
+                    class="form-control"
+                    id="country"
+                    placeholder="Country"
+                    required
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="clear_button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Clear Cart
+            </button>
+            <button
+              type="submit"
+              form="checkout_form"
+              id="checkout_button"
+              class="btn btn-primary"
+            >
+              Checkout
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-  
-<!-- Footer -->
-<div id="footer"></div>
-</body>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+  </body>
 </html>

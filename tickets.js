@@ -1,7 +1,15 @@
 //--------------------Database--------------------//
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import {get, set, update, ref, getDatabase, orderByChild, query} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import {
+  get,
+  set,
+  update,
+  ref,
+  getDatabase,
+  orderByChild,
+  query,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,8 +33,12 @@ let ticket_date = document.getElementById("ticket_date");
 let ticket_location = document.getElementById("ticket_location");
 let ticket_price = document.getElementById("ticket_price");
 let ticket_quantity = document.getElementById("ticket_quantity");
-let ticket_quantity_add_button = document.getElementById("ticket_quantity_add_button");
-let ticket_quantity_subtract_button = document.getElementById("ticket_quantity_subtract_button");
+let ticket_quantity_add_button = document.getElementById(
+  "ticket_quantity_add_button"
+);
+let ticket_quantity_subtract_button = document.getElementById(
+  "ticket_quantity_subtract_button"
+);
 let checkout_button = document.getElementById("checkout_button");
 let checkout_form = document.getElementById("checkout_form");
 let total = document.getElementById("total");
@@ -38,34 +50,37 @@ let current_price = 0;
 // Sends an email to Stage Fright's inbox
 function send_email(subject, message) {
   Email.send({
-     Host: "smtp.elasticemail.com",
-     Username: "stagefrightbandinbox@gmail.com",
-     Password: "C52E2686F30B4CD492367B323A7216F01BD5",
-     To: "stagefrightbandinbox@gmail.com",
-     From: "stagefrightbandinbox@gmail.com",
-     Subject: subject,
-     Body: message,
-     Port: 587,
+    Host: "smtp.elasticemail.com",
+    Username: "stagefrightbandinbox@gmail.com",
+    Password: "C52E2686F30B4CD492367B323A7216F01BD5",
+    To: "stagefrightbandinbox@gmail.com",
+    From: "stagefrightbandinbox@gmail.com",
+    Subject: subject,
+    Body: message,
+    Port: 587,
   }).then((message) => alert("Order Placed! (Status: " + message + ")"));
 }
 
 // Updates the total label in the modal if the quantity changes
 function update_total() {
-    let price = current_price * Number(ticket_quantity.value);
-    total.innerHTML = "<strong>Total: $</strong>" + price.toFixed(2);
-  }
+  let price = current_price * Number(ticket_quantity.value);
+  total.innerHTML = "<strong>Total: $</strong>" + price.toFixed(2);
+}
 //--------------------Load Content--------------------//
 // Loads all ticket listings from the database onto the page
 window.addEventListener("load", function () {
   let data_query = query(ref(db, "products/tickets"), orderByChild("date"));
-  get(data_query).then(function (snapshot) {
+  get(data_query)
+    .then(function (snapshot) {
       snapshot.forEach(function (child) {
         // New Row
         let tour_listing = document.createElement("tr");
         tour_listing.id = child.key;
         // Date Column
         let tour_date = document.createElement("td");
-        tour_date.textContent = new Date(child.val()["date"]).toUTCString().slice(0, 16);
+        tour_date.textContent = new Date(child.val()["date"])
+          .toUTCString()
+          .slice(0, 16);
         tour_listing.appendChild(tour_date);
         // Location Column
         let tour_location = document.createElement("td");
@@ -80,9 +95,13 @@ window.addEventListener("load", function () {
         ticket_buy_button.style.width = "100%";
         ticket.appendChild(ticket_buy_button);
         // Sells out the event if stock runs out or the date has already passed
-        if (child.val()["quantity"] > 0 && new Date() <= new Date(child.val()["date"])) {
+        if (
+          child.val()["quantity"] > 0 &&
+          new Date() <= new Date(child.val()["date"])
+        ) {
           ticket_buy_button.classList.add("btn-warning");
-          ticket_buy_button.textContent = "Buy Tickets (" + child.val()["quantity"] + " left)";
+          ticket_buy_button.textContent =
+            "Buy Tickets (" + child.val()["quantity"] + " left)";
           ticket_buy_button.setAttribute("data-bs-toggle", "modal");
           ticket_buy_button.setAttribute("data-bs-target", "#ticket_modal");
           ticket_buy_button.addEventListener("click", function () {
@@ -90,10 +109,18 @@ window.addEventListener("load", function () {
             current_id = child.key;
             current_price = child.val()["price"];
             // Updates Elements
-            ticket_date.innerHTML = "<strong>Date: </strong>" + new Date(child.val()["date"]).toUTCString().slice(0, 16);
-            ticket_location.innerHTML = "<strong>Location: </strong>" + child.val()["location"];
-            ticket_price.innerHTML = "<strong>Price: </strong> $" + Number(child.val()["price"]).toFixed(2) + "/ea.";
-            total.innerHTML = "<strong>Total: $</strong>" + Number(child.val()["price"]).toFixed(2);
+            ticket_date.innerHTML =
+              "<strong>Date: </strong>" +
+              new Date(child.val()["date"]).toUTCString().slice(0, 16);
+            ticket_location.innerHTML =
+              "<strong>Location: </strong>" + child.val()["location"];
+            ticket_price.innerHTML =
+              "<strong>Price: </strong> $" +
+              Number(child.val()["price"]).toFixed(2) +
+              "/ea.";
+            total.innerHTML =
+              "<strong>Total: $</strong>" +
+              Number(child.val()["price"]).toFixed(2);
             ticket_quantity.value = 1;
           });
         } else {
@@ -115,20 +142,20 @@ window.addEventListener("load", function () {
 });
 //--------------------Update Total--------------------//
 ticket_quantity.addEventListener("change", function () {
-    update_total();
-  });
-  
+  update_total();
+});
+
 ticket_quantity_add_button.addEventListener("click", function () {
   if (Number(ticket_quantity.value) < ticket_quantity.max) {
     ticket_quantity.value = Number(ticket_quantity.value) + 1;
     update_total();
   }
 });
-  
+
 ticket_quantity_subtract_button.addEventListener("click", function () {
   if (Number(ticket_quantity.value) > ticket_quantity.min) {
-     ticket_quantity.value = Number(ticket_quantity.value) - 1;
-     update_total();
+    ticket_quantity.value = Number(ticket_quantity.value) - 1;
+    update_total();
   }
 });
 //--------------------Checkout--------------------//
@@ -151,21 +178,31 @@ checkout_form.addEventListener("submit", async function (e) {
       let ticket_data = snapshot.val();
       if (requested_quantity <= ticket_data["quantity"]) {
         total_cost = requested_quantity * ticket_data["price"];
-        receipt = "Date: " + new Date(values[i]["date"]).toUTCString().slice(0, 16) + "<br>Location: " + ticket_data["location"] + "<br>Number of Tickets: " + requested_quantity;
+        receipt =
+          "Date: " +
+          new Date(values[i]["date"]).toUTCString().slice(0, 16) +
+          "<br>Location: " +
+          ticket_data["location"] +
+          "<br>Number of Tickets: " +
+          requested_quantity;
         update(ref(db, "products/tickets/" + current_id), {
           quantity: ticket_data["quantity"] - requested_quantity,
         });
       } else {
-        alert("Your order could not be processed. You're currently ordering more tickets than there are available for this event.");
+        alert(
+          "Your order could not be processed. You're currently ordering more tickets than there are available for this event."
+        );
         can_process = false;
       }
     })
     .catch(function (err) {
-      alert("Your order could not be processed. An error has occured. Error: " + err);
+      alert(
+        "Your order could not be processed. An error has occured. Error: " + err
+      );
       can_process = false;
     });
   // Disables the order button for a bit
-  checkout_button.disabled = true; 
+  checkout_button.disabled = true;
   // Sends the email to the Stage Fright inbox
   if (can_process) {
     send_email(
