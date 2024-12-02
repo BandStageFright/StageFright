@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stage Fright</title>
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css"/>
     <script src="load.js" defer></script>
+    <script src="navbar.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body>
@@ -14,16 +24,17 @@
 <!-- Navbar -->
 <div id="navbar"></div>
 
+
 <!-- Hero Section -->
-<section class="hero  py-5"> <!-- bg-primary -->
+<section class="hero py-5"> <!-- bg-primary -->
     <div class="banner">
       <div class="moving-container">
-        <img src="" alt="Moving Image 1" class="moving-image">
-        <img src="" alt="Moving Image 2" class="moving-image">
-        <img src="" alt="Moving Image 3" class="moving-image">
-        <img src="" alt="Moving Image 1 Duplicate" class="moving-image">
-        <img src="" alt="Moving Image 2 Duplicate" class="moving-image">
-        <img src="" alt="Moving Image 3 Duplicate" class="moving-image">
+        <p class="moving-image">Stage Fright: Scary Bold, Pure Rock Gold</p>
+        <p class="moving-image">New TIX locations now live!</p>
+        <p class="moving-image">New album releasing summer 2025!</p>
+        <p class="moving-image">Some of our merch is selling out. Act fast!</p>
+        <p class="moving-image">Book a ticket today!</p>
+        <p class="moving-image"></p>
       </div>
     </div>
     <!-- <div class="container text-center text-white"> -->
@@ -35,25 +46,31 @@
 </section>
 
 <!-- About Section -->
-<section id="about" class="py-5">
+<section id="about" class="py-5 m-5">
     <div class="container">
-        <h2 class="text-center mb-4">About the Band</h2>
-        <p>Stage Fright is a high-energy rock band that thrives on pushing boundaries and breaking the silence with their electrifying performances. Each member brings a unique, fearless style, from intense guitar riffs to powerful rhythms that leave a lasting impact. With their unapologetic sound and unrelenting passion, StageFright is here to dominate the stage and captivate every audience.</p>
+        <h1 class="text-center mb-4">About the Band</h1>
+        <p>Stage Fright is a high-energy rock band that thrives on pushing boundaries and breaking the silence with their electrifying performances. Each member brings a unique, fearless style, from intense guitar riffs to powerful rhythms that leave a lasting impact. With their unapologetic sound and unrelenting passion, Stage Fright is here to dominate the stage and captivate every audience.</p>
         <div class="row">
-            <div class="col-md-4">
-                <img alt="Image of Jack Harper"/>
-                <h5>Jack Harper - Lead Vocalist</h5>
-                <p>Jack brings electrifying energy to the stage with his masterful guitar solos. He is Known for his dynamic performances and creative riffs, he is the heart of Stage Fright's sound.</p>
+            <div class="card col-md-4">
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1527735095040-147bffb4cede?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image of Jack Harper" width="150px" height="auto" class="py-4"/>
+                <div class="card-body">
+                    <h4 class="card-title artist">Jack Harper - Lead Vocalist</h4>
+                    <p class="card-text artist">Jack brings electrifying energy to the stage with his masterful vocal solos. He is Known for his dynamic performances and creative riffs, he is the heart of Stage Fright's sound.</p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <img alt="Image of Maya Kapoor"/>
-                <h5>Maya Kapoor - Guitarist</h5>
-                <p>Maya’s rhythm guitar skills add depth and harmony to the band's music. Her ability to infuse modern sounds with soulful melodies sets the band apart.</p>
+            <div class="card col-md-4">
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1436831135709-48bdc150cce5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image of Maya Kapoor" width="350px" height="350px" class="py-4"/>
+                <div class="card-body">
+                    <h4 class="card-title artist">Maya Kapoor - Guitarist</h4>
+                    <p class="card-text artist">Maya’s rhythm guitar skills add depth and harmony to the band's music. Her ability to infuse modern sounds with soulful melodies sets the band apart.</p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <img alt="Image of Sofia Ramirez"/>
-                <h5>Sofia Ramirez - Drummer</h5>
-                <p>Sofia keeps the band’s beats alive with her vibrant drumming. Her energetic rhythms and precise timing fuel every performance, captivating the crowd.</p>
+            <div class="card col-md-4">
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1619065513120-ad804c3f5e22?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image of Sofia Ramirez" width="auto" height="350px" class="py-4"/>
+                <div class="card-body">
+                    <h4 class="card-title artist">Sofia Ramirez - Drummer</h4>
+                    <p class="card-text artist">Sofia keeps the band’s beats alive with her vibrant drumming. Her energetic rhythms and precise timing fuel every performance, captivating the crowd.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -65,33 +82,30 @@
         <div class="trapezoid"></div>
         <div class="content-wrapper">
             <div class="message">
-                <h2>Exclusive Merch Available!</h2>
+                <h1>Exclusive Merch Available!</h1>
                 <p>Get your hands on our limited edition merch and stand out at every event. From t-shirts to accessories, we've got something special for every fan.</p>
                 <a href="merch.html" class="btn btn-primary mt-3">Buy Merch</a>
             </div>
-            <div class="merch-image">
-                <img src="assets/images/merch.jpg" alt="Exclusive Merch" class="img-fluid rounded">
-            </div>
         </div>
+        <div class="trapezoid-right"></div>
     </div>
 </section>
 
 <!-- Ticket Section -->
 <section id="special-message" class="py-5">
     <div class="container d-flex align-items-center special-section">
+      <div class="trapezoid"></div>
         <div class="content-wrapper">
             <div class="message">
-                <h2>Get Your Tour Tickets Now!</h2>
+                <h1>Get Your Tour Tickets Now!</h1>
                 <p>Don't miss out on the live energy of Stage Fright's upcoming tour. Secure your spot and experience an unforgettable night of music and excitement!</p>
                 <a href="tickets.html" class="btn btn-primary mt-3">Buy Tickets</a>
-            </div>
-            <div class="tickets-image">
-                <img src="assets/images/tickets.jpg" alt="Tour Tickets" class="img-fluid rounded">
             </div>
         </div>
         <div class="trapezoid-right"></div>
     </div>
 </section>
+
 
 <!-- Footer -->
 <div id="footer"></div>
