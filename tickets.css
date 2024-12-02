@@ -1,3 +1,17 @@
+hr {
+  color: var(--white) !important;
+}
+
+th {
+   background-color: var(--obsidian-black) !important;
+   color: var(--white) !important;
+}
+
+td{
+   background-color: var(--obsidian-black) !important;
+   color: var(--white) !important;
+}
+
 #date_table{
   border: 5px solid var(--smoke-gray);
   border-image: linear-gradient(to bottom, var(--light-red), var(--gold)) 1;
@@ -31,20 +45,6 @@
 
 #ticket_number * {
   margin-right: 5px;
-}
-
-hr {
-  color: var(--white) !important;
-}
-
-th {
-   background-color: var(--obsidian-black) !important;
-   color: var(--white) !important;
-}
-
-td{
-   background-color: var(--obsidian-black) !important;
-   color: var(--white) !important;
 }
 
 #ticket_quantity_add_button{
