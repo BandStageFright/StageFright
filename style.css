@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);
 
 :root {
+  --white: #e1d9d9;
   --light-red: #b11226;
   --obsidian-black: #1b1b1b;
   --gold: #daa520;
@@ -10,6 +11,7 @@
 }
 
 .form_header {
+  color: var(--white) !important;
   font-weight: normal;
   margin-bottom: 6px;
 }
@@ -19,12 +21,11 @@ html {
 }
 
 body {
-  height: 100%;
+  padding: 0;
   margin: 0;
-  text-align: center;
   background: linear-gradient(
     to bottom,
-    var(--midnight-black), var(--deep-red)
+    var(--midnight-black), var(--deep-red), var(--midnight-black)
   );
   color: var(--light-red);
   font-size: large;
@@ -37,9 +38,42 @@ body * {
   font-style: normal;
 }
 
+.card{
+  background-color: var(--obsidian-black) !important;
+  border: none;
+}
+
+.card-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
+.card-img-top{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-position: center;
+    overflow: hidden;
+    background-size: contain;
+    width: 200px;
+    height: 200px;
+    align-self: center;
+    border-radius: 20px;
+}
+
 h1 {
   font-family: "Bebas Neue", sans-serif;
   color: var(--light-red);
+}
+
+h4 {
+  font-family: "Bebas Neue", sans-serif;
+  color: var(--light-red);
+}
+
+h5 {
+  color: var(--gold);
 }
 
 a:hover {
@@ -58,10 +92,10 @@ html {
   padding: 0;
 }
 
-/* Merch */
-
-.main-content {
-  flex-grow: 1;
+.nav-link.active {
+  color: var(--gold) !important;
+  font-weight: bold;
+  border-bottom: 2px solid var(--light-red);
 }
 
 .banner {
@@ -77,7 +111,6 @@ html {
   display: flex;
   width: calc(200%);
   animation: move-right 20s linear infinite;
-  background-color: var(--midnight-black);
   align-content: center;
   justify-content: center;
   text-align: center;
@@ -96,6 +129,10 @@ html {
   100% {
     transform: translateX(-50%);
   }
+}
+
+.main-content{
+  flex-grow: 1;
 }
 
 .hero {
@@ -122,13 +159,18 @@ html {
   background-color: var(--obsidian-black);
   color: var(--gold);
   margin: 20px;
+  text-align: center;
+  transition: ease 0.25s;
   border: 5px solid transparent;
   border-image: linear-gradient(to bottom, var(--light-red), var(--gold)) 1;
-  border-radius: 25px;
 }
 
 #about:hover {
-  box-shadow: 0 0 30px rgba(255, 70, 0, 0.65);
+  box-shadow: 0 0 50px var(--light-red);
+}
+
+.artist {
+  color: var(--gold);
 }
 
 .special-section {
@@ -158,11 +200,19 @@ html {
 }
 
 .message {
+  text-align: center;
   background-color: var(--obsidian-black);
   color: var(--gold);
   padding: 20px;
   border-radius: 10px;
+  transition: ease 0.25s;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border: 5px solid transparent;
+  border-image: linear-gradient(to bottom, var(--light-red), var(--gold)) 1;
+}
+
+.message:hover {
+  box-shadow: 0 0 50px var(--light-red);
 }
 
 .trapezoid-right {
@@ -178,11 +228,11 @@ html {
 }
 
 footer {
-  background-color: var(--obsidian-black);
   color: white;
   text-align: center;
   width: 100%;
-  position: absolute;
+  padding: 1rem;
+  position: relative;
 }
 
 footer a {

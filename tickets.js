@@ -81,7 +81,7 @@ window.addEventListener("load", function () {
         ticket.appendChild(ticket_buy_button);
         // Sells out the event if stock runs out or the date has already passed
         if (child.val()["quantity"] > 0 && new Date() <= new Date(child.val()["date"])) {
-          ticket_buy_button.classList.add("btn-success");
+          ticket_buy_button.classList.add("btn-warning");
           ticket_buy_button.textContent = "Buy Tickets (" + child.val()["quantity"] + " left)";
           ticket_buy_button.setAttribute("data-bs-toggle", "modal");
           ticket_buy_button.setAttribute("data-bs-target", "#ticket_modal");

@@ -17,6 +17,7 @@
     <script src="load.js" defer></script>
     <script src="https://smtpjs.com/v3/smtp.js" defer></script>
     <script src="tickets.js" type="module" defer></script>
+    <script src="navbar.js" defer></script>
   </head>
   <body>
     <!-- Navbar -->
@@ -25,13 +26,13 @@
     <!-- Tour Dates Section -->
     <section id="tour_dates" class="py-5">
       <div class="container">
-        <h2 class="text-center mb-4">Tour Dates</h2>
-        <div class="text-center mb-4">
+        <h1 class="text-center">Tour Dates</h1>
+        <h5 class="text-center mb-4">
           All events start at 7:00 PM in the location's local time zone.
-        </div>
-        <table class="table table-striped">
+        </h5>
+        <table class="table table-striped" id="date_table">
           <thead>
-            <tr>
+            <tr style="border: 5px;">
               <th>Date</th>
               <th>Location</th>
               <th>Tickets</th>
@@ -43,11 +44,11 @@
     </section>
 
     <!-- Ticket Modal -->
-    <div class="modal fade" id="ticket_modal" tabindex="-1">
+    <div class="modal fade" id="ticket_modal" tabindex="-1" data-bs-theme="dark">
       <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="cart_modal_label">Buy Tickets</h1>
+            <h2 class="modal-title fs-5 form_header" id="cart_modal_label">Buy Tickets</h2>
             <button
               type="button"
               class="btn-close"
@@ -141,7 +142,7 @@
               type="submit"
               form="checkout_form"
               id="checkout_button"
-              class="btn btn-primary"
+              class="btn btn-warning"
             >
               Checkout
             </button>

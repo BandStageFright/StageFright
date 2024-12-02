@@ -1,9 +1,23 @@
+#date_table{
+  border: 5px solid var(--smoke-gray);
+  border-image: linear-gradient(to bottom, var(--light-red), var(--gold)) 1;
+}
+
+#date_table *{
+  border-bottom: 5px solid var(--smoke-gray);
+}
+
+#tour_dates_body *{
+  border: none
+}
+
 #tickets * {
   height: 25px;
   align-items: center;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  color: var(--white) !important;
 }
 
 #ticket_number {
@@ -19,13 +33,32 @@
   margin-right: 5px;
 }
 
+hr {
+  color: var(--white) !important;
+}
 
 th {
    background-color: var(--obsidian-black) !important;
-   color: rgb(231, 231, 231) !important;
+   color: var(--white) !important;
 }
 
 td{
    background-color: var(--obsidian-black) !important;
-   color: rgb(231, 231, 231) !important;
+   color: var(--white) !important;
+}
+
+#ticket_quantity_add_button{
+  border: 2px solid black;
+  border-radius: 100px;
+  width: 25px;
+  height: 25px;
+  font-size: small;
+}
+
+#ticket_quantity_subtract_button{
+  border: 2px solid black;
+  border-radius: 100px;
+  width: 25px;
+  height: 25px;
+  font-size: small;
 }

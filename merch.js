@@ -103,6 +103,7 @@ function display_cart() {
       });
 
       let subtract_button = document.createElement("button")
+      subtract_button.classList.add("subtract_button")
       subtract_button.textContent = "-"
       subtract_button.addEventListener("click", function(){
         if(Number(quantity_input.value) > quantity_input.min){
@@ -112,6 +113,7 @@ function display_cart() {
       })
 
       let add_button = document.createElement("button")
+      add_button.classList.add("add_button")
       add_button.textContent = "+"
       add_button.addEventListener("click", function(){
         if(Number(quantity_input.value) < quantity_input.max){
@@ -188,7 +190,7 @@ window.addEventListener("load", function () {
             alert("This product is sold out! Sorry.");
           });
         } else {
-          product_buy_button.classList.add("btn-success");
+          product_buy_button.classList.add("btn-warning");
           product_buy_button.textContent = "Add to cart";
           product_buy_button.addEventListener("click", function () {
             // Creates a blank dictionary
