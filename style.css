@@ -109,15 +109,16 @@ html {
 
 .moving-container {
   display: flex;
-  width: calc(200%);
-  animation: move-right 20s linear infinite;
+  width: calc(300%);
+  animation: move-right 30s linear infinite;
   align-content: center;
   justify-content: center;
   text-align: center;
+  will-change: transform;
 }
 
 .moving-image {
-  width: 16.66%;
+  width: 25%;
   text-align: center;
   color: var(--gold) !important;
 }
