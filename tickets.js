@@ -85,6 +85,15 @@ window.addEventListener("load", function () {
         // Location Column
         let tour_location = document.createElement("td");
         tour_location.textContent = child.val()["location"];
+        let location_link = document.createElement("a")
+        location_link.target = "_blank"
+        location_link.href = "http://maps.google.com/?q=" + child.val()["location"];
+        location_link.style.color = "#e1d9d9"
+        location_link.style.marginLeft = "5px"
+        let location_icon = document.createElement("i")
+        location_icon.classList.add("bi-geo-alt-fill")
+        location_link.appendChild(location_icon)
+        tour_location.appendChild(location_link)
         tour_listing.appendChild(tour_location);
         // Ticket Button Column
         let ticket = document.createElement("td");

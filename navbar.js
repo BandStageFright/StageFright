@@ -14,12 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
         merch: "merch.html",
         contact: "contact.html",
       };
-
-      for (const id in navLinks) {
-        if (currentPath === navLinks[id]) {
-          console.log(`Found active link: ${id}`);
-          document.getElementById(id).classList.add("active");
-        }
+      
+      if(currentPath != ""){
+        for (const id in navLinks) {
+            if (currentPath === navLinks[id]) {
+              console.log(`Found active link: ${id}`);
+              document.getElementById(id).classList.add("active");
+            }
+          }
+      } else {
+        document.getElementById("home").classList.add("active")
       }
     }
   }, 100);
