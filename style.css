@@ -24,8 +24,12 @@ html {
 body {
   padding: 0;
   margin: 0;
-  background: linear-gradient(to bottom,
-      var(--midnight-black), var(--deep-red), var(--midnight-black));
+  background: linear-gradient(
+    to bottom,
+    var(--midnight-black),
+    var(--deep-red),
+    var(--midnight-black)
+  );
   color: var(--light-red);
   font-size: large;
 }
@@ -192,9 +196,11 @@ i:hover {
 .trapezoid {
   width: 100px;
   height: 200px;
-  background: linear-gradient(to bottom right,
-      var(--deep-red) 50%,
-      var(--gold) 50%);
+  background: linear-gradient(
+    to bottom right,
+    var(--deep-red) 50%,
+    var(--gold) 50%
+  );
   clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
   flex-shrink: 0;
 }
@@ -202,9 +208,11 @@ i:hover {
 .trapezoid-right {
   width: 100px;
   height: 200px;
-  background: linear-gradient(to bottom left,
-      var(--deep-red) 50%,
-      var(--gold) 50%);
+  background: linear-gradient(
+    to bottom left,
+    var(--deep-red) 50%,
+    var(--gold) 50%
+  );
   clip-path: polygon(100% 0, 0 0, 20% 100%, 100% 100%);
   flex-shrink: 0;
 }

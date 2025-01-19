@@ -1,84 +1,81 @@
-.card{
+.card {
   background-color: var(--obsidian-black) !important;
   color: var(--white) !important;
 }
 
-.card-title{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .card-img-top{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  .cart_line {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; 
-  }
-  
-  .cart_line * {
-    margin-right: 10px;
-    height: 25px;
-    color: var(--white);
-  }
+.card-img-top {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  #total_label{
-    color: var(--white);
-  }
-  
-  #cart_button {
-    width: 75px;
-    height: 75px;
-    position: fixed;
-    border-radius: 100px;
-    bottom: 7vw;
-    right: 3vw;
-    transition: ease-in;
-  }
-  
-  #cart_button:hover {
-    box-shadow: 0 5px 15px var(--gol);
-  }
+.cart_line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
-  i:hover {
-    color: var(--midnight-black) !important;
-  }
-  
-  #cart_items {
-    position: absolute;
-    background-color: crimson;
-    width: 25px;
-    height: 25px;
-    border-radius: 100px;
-    top: 0;
-    left: 0;
-    color: var(--white);
-  }
+.cart_line * {
+  margin-right: 10px;
+  height: 25px;
+  color: var(--white);
+}
 
-  hr {
-    color: var(--white) !important;
-  }
+#total_label {
+  color: var(--white);
+}
 
-  .add_button{
-    border: 2px solid black;
-    border-radius: 100px;
-    width: 25px;
-    height: 25px;
-    font-size: small;
-  }
-  
-  .subtract_button{
-    border: 2px solid black;
-    border-radius: 100px;
-    width: 25px;
-    height: 25px;
-    font-size: small;
-  }
-  
+#cart_button {
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  border-radius: 100px;
+  bottom: 7vw;
+  right: 3vw;
+  transition: ease-in;
+}
 
-  
+#cart_button:hover {
+  box-shadow: 0 5px 15px var(--gol);
+}
+
+i:hover {
+  color: var(--midnight-black) !important;
+}
+
+#cart_items {
+  position: absolute;
+  background-color: crimson;
+  width: 25px;
+  height: 25px;
+  border-radius: 100px;
+  top: 0;
+  left: 0;
+  color: var(--white);
+}
+
+hr {
+  color: var(--white) !important;
+}
+
+.add_button {
+  border: 2px solid black;
+  border-radius: 100px;
+  width: 25px;
+  height: 25px;
+  font-size: small;
+}
+
+.subtract_button {
+  border: 2px solid black;
+  border-radius: 100px;
+  width: 25px;
+  height: 25px;
+  font-size: small;
+}

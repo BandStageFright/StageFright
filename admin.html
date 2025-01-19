@@ -22,135 +22,144 @@
   <body>
     <div id="navbar"></div>
 
-      <h1 class="text-center mb-4" style="margin-top: 20px">Administrator Console</h1>
-      <h5 class="text-center mb-5">Please login to access administrator features.</h5>
+    <h1 class="text-center mb-4" style="margin-top: 20px">
+      Administrator Console
+    </h1>
+    <h5 class="text-center mb-5">
+      Please login to access administrator features.
+    </h5>
 
-      <div id="admin_console">
-        <form id="login_form">
-          <input
-            type="password"
-            id="password_input"
-            placeholder="Admin Password"
-            required
-          />
-          <button type="submit">Enter</button>
-        </form>
-        <div style="width: 100%; padding: 10px">
-          <!-- Add Merch Button -->
-          <button
-            type="button"
-            id="merch_button"
-            class="btn btn-warning"
-            data-bs-toggle="modal"
-            style="width: 100%; margin-bottom: 5px"
-          >
-            Add Merch Products
-          </button>
+    <div id="admin_console">
+      <form id="login_form">
+        <input
+          type="password"
+          id="password_input"
+          placeholder="Admin Password"
+          required
+        />
+        <button type="submit">Enter</button>
+      </form>
+      <div style="width: 100%; padding: 10px">
+        <!-- Add Merch Button -->
+        <button
+          type="button"
+          id="merch_button"
+          class="btn btn-warning"
+          data-bs-toggle="modal"
+          style="width: 100%; margin-bottom: 5px"
+        >
+          Add Merch Products
+        </button>
 
-          <!-- Add Tour Button -->
-          <button
-            type="button"
-            id="tour_button"
-            class="btn btn-warning"
-            data-bs-toggle="modal"
-            style="width: 100%"
-          >
-            Add Tour Products
-          </button>
-        </div>
+        <!-- Add Tour Button -->
+        <button
+          type="button"
+          id="tour_button"
+          class="btn btn-warning"
+          data-bs-toggle="modal"
+          style="width: 100%"
+        >
+          Add Tour Products
+        </button>
       </div>
+    </div>
 
-      <!-- Add Product Modal -->
-      <div class="modal fade" id="add_product_modal" tabindex="-1" data-bs-theme="dark">
-        <div class="modal-dialog modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title fs-5 form_header" id="cart_modal_label">
-                Add a product to firebase
-              </h2>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <div class="modal-body" style="margin: 10px">
-              <form id="product_form">
-                <div class="form_header">Product Details</div>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="id_input"
-                    placeholder="Product ID"
-                    required
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name_input"
-                    placeholder="Merch Name"
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="date_input"
-                    placeholder="Tour Date"
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="location_input"
-                    placeholder="Tour Location"
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="price_input"
-                    placeholder="Price"
-                    required
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="quantity_input"
-                    placeholder="Quantity"
-                    required
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="image_input"
-                    placeholder="Merch Image Link"
-                  />
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="submit"
-                form="product_form"
-                id="add_product_button"
-                class="btn btn-warning"
-              >
-                Add
-              </button>
-            </div>
+    <!-- Add Product Modal -->
+    <div
+      class="modal fade"
+      id="add_product_modal"
+      tabindex="-1"
+      data-bs-theme="dark"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5 form_header" id="cart_modal_label">
+              Add a product to firebase
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body" style="margin: 10px">
+            <form id="product_form">
+              <div class="form_header">Product Details</div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="id_input"
+                  placeholder="Product ID"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name_input"
+                  placeholder="Merch Name"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="date_input"
+                  placeholder="Tour Date"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="location_input"
+                  placeholder="Tour Location"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="price_input"
+                  placeholder="Price"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="quantity_input"
+                  placeholder="Quantity"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="image_input"
+                  placeholder="Merch Image Link"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              form="product_form"
+              id="add_product_button"
+              class="btn btn-warning"
+            >
+              Add
+            </button>
           </div>
         </div>
       </div>
+    </div>
 
     <div id="footer"></div>
   </body>
