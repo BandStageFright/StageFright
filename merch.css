@@ -1,6 +1,7 @@
 .card {
   background-color: var(--obsidian-black) !important;
   color: var(--white) !important;
+  border: solid black 5px !important;
 }
 
 .card-title {

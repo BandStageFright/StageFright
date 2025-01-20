@@ -24,10 +24,9 @@
 
     <h1 class="text-center">Contact Us</h1>
     <h5 class="text-center">
-      Have questions about your order? Run into an issue with our page? Ask us
-      anything!!!
+      Submit the form below if you have any questions regarding orders or the band itself.
     </h5>
-    <form id="contactForm" class="container">
+    <form id="contactForm" class="container" style="max-width: 800px;">
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="name" class="form-label">Full Name</label>
@@ -37,6 +36,8 @@
             id="name"
             name="name"
             required
+            style="background-color: #e1d9d9;"
+            placeholder="John Smith"
           />
         </div>
         <div class="col-md-6 mb-3">
@@ -47,6 +48,8 @@
             id="email"
             name="email"
             required
+            style="background-color: #e1d9d9;"
+            placeholder="example@gmail.com"
           />
         </div>
       </div>
@@ -58,6 +61,8 @@
           id="subject"
           name="subject"
           required
+          style="background-color: #e1d9d9;"
+          placeholder="Subject Line"
         />
       </div>
       <div class="mb-3">
@@ -68,11 +73,24 @@
           name="message"
           rows="4"
           required
+          style="background-color: #e1d9d9;"
+          placeholder="Type in your message..."
         ></textarea>
       </div>
-      <button type="submit" class="btn btn-warning">Send Message</button>
+      <button type="submit" class="btn btn-warning">Submit</button>
+      <div id="other_contact">
+        <div>
+            <i class="bi-envelope-fill"></i>
+            stagefrightbandinbox@gmail.com
+          </div>
+          <div>
+            <i class="bi-telephone-fill"></i>
+            545-223-1920
+          </div>
+      </div>
     </form>
 
+    
     <!-- Footer -->
     <div id="footer"></div>
   </body>
