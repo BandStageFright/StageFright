@@ -25,7 +25,7 @@
 .cart_line * {
   margin-right: 10px;
   height: 25px;
-  color: var(--white);
+  color: var(--gold);
 }
 
 #total_label {
@@ -33,17 +33,18 @@
 }
 
 #cart_button {
-  width: 75px;
-  height: 75px;
+  width: 80px;
+  height: 80px;
   position: fixed;
   border-radius: 100px;
   bottom: 7vw;
   right: 3vw;
   transition: ease-in;
+  border: solid var(--light-red) 3px;
 }
 
 #cart_button:hover {
-  box-shadow: 0 5px 15px var(--gol);
+  box-shadow: 0 5px 15px var(--gold);
 }
 
 i:hover {

@@ -31,7 +31,7 @@ td {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: var(--white) !important;
+  color: var(--gold) !important;
 }
 
 #ticket_number {
@@ -61,4 +61,12 @@ td {
   width: 25px;
   height: 25px;
   font-size: small;
+}
+
+#total {
+    color: var(--white) !important;
+}
+
+#total *{
+    color: var(--white) !important;
 }
