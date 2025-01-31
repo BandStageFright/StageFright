@@ -1,7 +1,13 @@
 //--------------------Database--------------------//
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import {get, set, update, ref, getDatabase} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import {
+  get,
+  set,
+  update,
+  ref,
+  getDatabase,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,12 +25,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 //--------------------Elements & Variables--------------------//
-// Elements 
+// Elements
 const cart_button = document.getElementById("cart_button");
 const cart_items = document.getElementById("cart_items");
 const cart_div = document.getElementById("cart");
 const clear_button = document.getElementById("clear_button");
-const checkout_button = document.getElementById("checkout_button")
+const checkout_button = document.getElementById("checkout_button");
 const checkout_form = document.getElementById("checkout_form");
 
 // Global Variables
@@ -46,7 +52,10 @@ function send_email(subject, message) {
 // Displays/Updates the cart UI inside the modal
 function display_cart() {
   cart_div.textContent = "";
-  if (localStorage["cart"] != undefined && Object.keys(JSON.parse(localStorage["cart"])).length > 0) {
+  if (
+    localStorage["cart"] != undefined &&
+    Object.keys(JSON.parse(localStorage["cart"])).length > 0
+  ) {
     let cart = JSON.parse(localStorage["cart"]);
     let keys = Object.keys(cart);
     let values = Object.values(cart);
@@ -63,35 +72,39 @@ function display_cart() {
       line_div.classList.add("cart_line");
 
       let line_text = document.createElement("div");
-      line_text.textContent = values[i]["item_name"] + "...............$" + String(price.toFixed(2));
+      line_text.textContent =
+        values[i]["item_name"] + "...............$" + String(price.toFixed(2));
 
       let quantity_input = document.createElement("input");
       quantity_input.min = 0;
-      quantity_input.max = 999
+      quantity_input.max = 999;
       quantity_input.style.width = "50px";
       quantity_input.style.alignContent = "center";
       quantity_input.type = "number";
       quantity_input.value = values[i]["quantity"];
 
-      function update_quantity(){
-        items_in_cart -= quantity
-        quantity = Number(quantity_input.value)
-        items_in_cart += quantity
+      function update_quantity() {
+        items_in_cart -= quantity;
+        quantity = Number(quantity_input.value);
+        items_in_cart += quantity;
         cart_items.textContent = items_in_cart;
 
         if (quantity_input.value == 0) {
           delete cart[keys[i]];
-          line_div.remove()
+          line_div.remove();
         } else {
           cart[keys[i]]["quantity"] = quantity;
         }
         localStorage["cart"] = JSON.stringify(cart);
 
-        if (items_in_cart > 0){
+        if (items_in_cart > 0) {
           total -= price;
-          price = quantity*values[i]["price"]
-          total += price
-          line_text.textContent = values[i]["item_name"] + "...............$" + String(price.toFixed(2));
+          price = quantity * values[i]["price"];
+          total += price;
+          line_text.textContent =
+            values[i]["item_name"] +
+            "...............$" +
+            String(price.toFixed(2));
           total_div.textContent = "Total: $" + total.toFixed(2);
         } else {
           cart_div.textContent = "Your cart is empty!";
@@ -99,28 +112,28 @@ function display_cart() {
       }
 
       quantity_input.addEventListener("change", function () {
-        update_quantity()
+        update_quantity();
       });
 
-      let subtract_button = document.createElement("button")
-      subtract_button.classList.add("subtract_button")
-      subtract_button.textContent = "-"
-      subtract_button.addEventListener("click", function(){
-        if(Number(quantity_input.value) > quantity_input.min){
-          quantity_input.value = Number(quantity_input.value) - 1
-          update_quantity()
+      let subtract_button = document.createElement("button");
+      subtract_button.classList.add("subtract_button");
+      subtract_button.textContent = "-";
+      subtract_button.addEventListener("click", function () {
+        if (Number(quantity_input.value) > quantity_input.min) {
+          quantity_input.value = Number(quantity_input.value) - 1;
+          update_quantity();
         }
-      })
+      });
 
-      let add_button = document.createElement("button")
-      add_button.classList.add("add_button")
-      add_button.textContent = "+"
-      add_button.addEventListener("click", function(){
-        if(Number(quantity_input.value) < quantity_input.max){
-          quantity_input.value = Number(quantity_input.value) + 1
-          update_quantity()
+      let add_button = document.createElement("button");
+      add_button.classList.add("add_button");
+      add_button.textContent = "+";
+      add_button.addEventListener("click", function () {
+        if (Number(quantity_input.value) < quantity_input.max) {
+          quantity_input.value = Number(quantity_input.value) + 1;
+          update_quantity();
         }
-      })
+      });
 
       line_div.appendChild(subtract_button);
       line_div.appendChild(quantity_input);
@@ -176,7 +189,8 @@ window.addEventListener("load", function () {
         // Product price
         let product_price = document.createElement("p");
         product_price.classList.add("card-text");
-        product_price.textContent = "$" + values[i]["price"] + " | Stock: " + values[i]["quantity"];
+        product_price.textContent =
+          "$" + values[i]["price"] + " | Stock: " + values[i]["quantity"];
         product_listing_content.appendChild(product_price);
         // Product buy button
         let product_buy_button = document.createElement("button");
@@ -243,7 +257,7 @@ clear_button.addEventListener("click", function () {
   if (localStorage["cart"] != undefined) {
     localStorage.removeItem("cart");
   }
-  cart_items.textContent = "0"
+  cart_items.textContent = "0";
   display_cart();
 });
 //--------------------Checkout--------------------//
@@ -274,24 +288,45 @@ checkout_form.addEventListener("submit", async function (e) {
         if (values[i]["quantity"] <= product_data["quantity"]) {
           let cost = values[i]["quantity"] * values[i]["price"];
           total_price += cost;
+<<<<<<< HEAD
           receipt += product_data["item_name"] +" (x" + values[i]["quantity"] + "): $" 
                      + cost.toFixed(2) + "<br>";
+=======
+          receipt +=
+            product_data["item_name"] +
+            " (x" +
+            values[i]["quantity"] +
+            "): $" +
+            cost.toFixed(2) +
+            "<br>";
+>>>>>>> 740b347d246b28f8c6f54efa7a148fbdf239efbe
           update(ref(db, "products/merch/" + keys[i]), {
-            quantity: product_data["quantity"] - values[i]["quantity"]
+            quantity: product_data["quantity"] - values[i]["quantity"],
           });
         } else {
+<<<<<<< HEAD
           alert("Your order could not be processed. You currently have more '" + 
                 values[i]["item_name"] + "' in your cart than available.");
+=======
+          alert(
+            "Your order could not be processed. You currently have more '" +
+              values[i]["item_name"] +
+              "' in your cart than available."
+          );
+>>>>>>> 740b347d246b28f8c6f54efa7a148fbdf239efbe
           can_process = false;
         }
       })
       // Catches any errors
       .catch(function (err) {
-        alert("Your order could not be processed. An error has occured. Error: " + err);
+        alert(
+          "Your order could not be processed. An error has occured. Error: " +
+            err
+        );
         can_process = false;
       });
     // Disables the checkout button for a bit
-    checkout_button.disabled = true
+    checkout_button.disabled = true;
     // Sends an order confrimation email to Stage Fright's inbox
     if (can_process) {
       send_email(
@@ -301,21 +336,31 @@ checkout_form.addEventListener("submit", async function (e) {
             <p><strong>Name:</strong> ${first_name + " " + last_name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Card #:</strong> ${credit_card_number}</p>
-            <p><strong>Address:</strong> ${address + ", " + city + ", " + state + ", " + country + ", " + zipcode}</p>
+            <p><strong>Address:</strong> ${
+              address +
+              ", " +
+              city +
+              ", " +
+              state +
+              ", " +
+              country +
+              ", " +
+              zipcode
+            }</p>
             <p><strong>Your Order:</strong></p>
             <p>${receipt}</p>
             <p><strong>Total:</strong> ${total_price.toFixed(2)}</p>
             <p>Please fill out our contact form if you have any questions/updates regarding your order. Thank for your purchase.</p>
          `
       );
-      // Waits 3 seconds before clearing the cart and submitting the form 
-      setTimeout(function(){
+      // Waits 3 seconds before clearing the cart and submitting the form
+      setTimeout(function () {
         localStorage.removeItem("cart");
-        checkout_form.submit()
-      }, 3000)
+        checkout_form.submit();
+      }, 3000);
     }
     // Reenables the checkout button
-    checkout_button.disabled = false
+    checkout_button.disabled = false;
   }
 });
 //---------------------------------------------------//

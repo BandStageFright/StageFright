@@ -24,7 +24,7 @@
     <div id="navbar"></div>
 
     <!-- Tour Dates Section -->
-    <section id="tour_dates" class="py-5">
+    <section id="tour_dates" class="py-3">
       <div class="container">
         <h1 class="text-center">Tour Dates</h1>
         <h5 class="text-center mb-4">
@@ -32,10 +32,10 @@
         </h5>
         <table class="table table-striped" id="date_table">
           <thead>
-            <tr style="border: 5px;">
-              <th>Date</th>
-              <th>Location</th>
-              <th>Tickets</th>
+            <tr style="border: 5px">
+              <th><i class="bi bi-calendar-fill" style="margin-right: 5px; border-bottom: none !important;"></i>Date</th>
+              <th><i class="bi bi-map-fill" style="margin-right: 5px; border-bottom: none !important;"></i>Location</th>
+              <th style="text-align: center;"><i class="bi bi-ticket-fill" style="margin-right: 5px; border-bottom: none !important;"></i>Tickets</th>
             </tr>
           </thead>
           <tbody id="tour_dates_body"></tbody>
@@ -44,11 +44,18 @@
     </section>
 
     <!-- Ticket Modal -->
-    <div class="modal fade" id="ticket_modal" tabindex="-1" data-bs-theme="dark">
+    <div
+      class="modal fade"
+      id="ticket_modal"
+      tabindex="-1"
+      data-bs-theme="dark"
+    >
       <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="modal-title fs-5 form_header" id="cart_modal_label">Buy Tickets</h2>
+            <h2 class="modal-title fs-5 form_header" id="cart_modal_label">
+              Buy Tickets
+            </h2>
             <button
               type="button"
               class="btn-close"
@@ -56,9 +63,9 @@
             ></button>
           </div>
           <div class="modal-body" style="margin: 10px">
-            <div class="form_header">Ticket Information</div>
+            <div class="form_header"><i class="bi bi-ticket-fill"></i> Ticket Information</div>
             <div id="tickets">
-              <div id="ticket_date"><strong>Date: </strong>???</div>
+              <div id="ticket_date"></i><strong>Date: </strong>???</div>
               <div id="ticket_location"><strong>Location: </strong>???</div>
               <div id="ticket_price"><strong>Price: </strong>$???/ea.</div>
               <div id="ticket_number">
@@ -67,12 +74,13 @@
                 <input id="ticket_quantity" type="number" min="1" max="100" />
                 <button id="ticket_quantity_add_button">+</button>
               </div>
+              <br>
               <div id="total"><strong>Total: </strong>$???</div>
             </div>
             <hr />
             <form id="checkout_form" class="mb-3">
               <div id="personal_information">
-                <div class="form_header">Personal Information</div>
+                <div class="form_header"><i class="bi bi-person-fill"> </i>Personal Information</div>
                 <div class="row mb-3">
                   <div class="col">
                     <input
@@ -105,7 +113,7 @@
               </div>
               <hr />
               <div id="billing_info">
-                <div class="form_header">Billing Information</div>
+                <div class="form_header"><i class="bi bi-credit-card-fill"></i> Billing Information</div>
                 <div class="row g-2 mb-3">
                   <div class="col-sm-9">
                     <input

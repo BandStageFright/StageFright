@@ -1,8 +1,19 @@
 //--------------------Database--------------------//
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import {get, set, update, ref, getDatabase} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
-import {getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import {
+  get,
+  set,
+  update,
+  ref,
+  getDatabase,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -41,21 +52,27 @@ let product_type = "";
 //--------------------Security--------------------//
 onAuthStateChanged(auth, function (user) {
   if (user != null && user.email == "stagefrightbandinbox@gmail.com") {
-    login_form.remove()
-    merch_button.setAttribute("data-bs-target", "#add_product_modal")
-    tour_button.setAttribute("data-bs-target", "#add_product_modal")
-  } 
+    login_form.remove();
+    merch_button.setAttribute("data-bs-target", "#add_product_modal");
+    tour_button.setAttribute("data-bs-target", "#add_product_modal");
+  }
 });
 
 login_form.addEventListener("submit", function (e) {
   e.preventDefault();
-  signInWithEmailAndPassword(auth, "stagefrightbandinbox@gmail.com", password_input.value).then(function () {
-    login_form.remove()
-    merch_button.setAttribute("data-bs-target", "#add_product_modal")
-    tour_button.setAttribute("data-bs-target", "#add_product_modal")
-  }).catch(function(err){
-    alert(err)
-  });
+  signInWithEmailAndPassword(
+    auth,
+    "stagefrightbandinbox@gmail.com",
+    password_input.value
+  )
+    .then(function () {
+      login_form.remove();
+      merch_button.setAttribute("data-bs-target", "#add_product_modal");
+      tour_button.setAttribute("data-bs-target", "#add_product_modal");
+    })
+    .catch(function (err) {
+      alert(err);
+    });
 });
 //--------------------Add Products--------------------//
 // Switches to merch products
@@ -81,7 +98,10 @@ product_form.addEventListener("submit", async function (e) {
   // Prevents the form from refreshing the page
   e.preventDefault();
   // Checks if user is an admin
-  if (auth.currentUser != null && auth.currentUser.email == "stagefrightbandinbox@gmail.com") {
+  if (
+    auth.currentUser != null &&
+    auth.currentUser.email == "stagefrightbandinbox@gmail.com"
+  ) {
     // Values from form
     let id = id_input.value;
     let price = price_input.value;
@@ -127,7 +147,7 @@ product_form.addEventListener("submit", async function (e) {
     // Submits the form
     product_form.submit();
   } else {
-    alert("You don't have access to this.")
+    alert("You don't have access to this.");
   }
 });
 //---------------------------------------------------//

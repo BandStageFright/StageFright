@@ -7,7 +7,7 @@ function load() {
     }
   };
   x.send();
-  
+
   const y = new XMLHttpRequest();
   y.open("GET", "navbar.html", true);
   y.onload = function () {

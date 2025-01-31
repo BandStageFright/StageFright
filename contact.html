@@ -1,47 +1,97 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stage Fright | Contact</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="contact.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="contact.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
     <script src="https://smtpjs.com/v3/smtp.js" defer></script>
     <script src="contact.js" defer></script>
     <script src="load.js" defer></script>
     <script src="navbar.js" defer></script>
-</head>
-<body>
-<!-- Navbar -->
-<div id="navbar"></div>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div id="navbar"></div>
 
-
-<h1 class="text-center">Contact Us</h1>
-<h5 class="text-center">Have questions about your order? Run into an issue with our page? Ask us anything!!!</h5>
-<form id="contactForm" class="container">
-    <div class="row">
+    <h1 class="text-center">Contact Us</h1>
+    <h5 class="text-center">
+      Submit the form below if you have any questions regarding orders or the band itself.
+    </h5>
+    <form id="contactForm" class="container" style="max-width: 800px;">
+      <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+          <label for="name" class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+            style="background-color: #e1d9d9;"
+            placeholder="John Smith"
+          />
         </div>
         <div class="col-md-6 mb-3">
-            <label for="email" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+            style="background-color: #e1d9d9;"
+            placeholder="example@gmail.com"
+          />
         </div>
-    </div>
-    <div class="mb-3">
+      </div>
+      <div class="mb-3">
         <label for="subject" class="form-label">Subject</label>
-        <input type="text" class="form-control" id="subject" name="subject" required>
-    </div>
-    <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="subject"
+          name="subject"
+          required
+          style="background-color: #e1d9d9;"
+          placeholder="Subject Line"
+        />
+      </div>
+      <div class="mb-3">
         <label for="message" class="form-label">Message</label>
-        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-warning">Send Message</button>
-</form>
+        <textarea
+          class="form-control"
+          id="message"
+          name="message"
+          rows="4"
+          required
+          style="background-color: #e1d9d9;"
+          placeholder="Type in your message..."
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-warning">Submit</button>
+      <div id="other_contact">
+        <div>
+            <i class="bi-envelope-fill"></i>
+            stagefrightbandinbox@gmail.com
+          </div>
+          <div>
+            <i class="bi-telephone-fill"></i>
+            545-223-1920
+          </div>
+      </div>
+    </form>
 
-<!-- Footer -->
-<div id="footer"></div>
-</body>
+    
+    <!-- Footer -->
+    <div id="footer"></div>
+  </body>
 </html>
