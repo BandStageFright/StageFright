@@ -274,12 +274,14 @@ checkout_form.addEventListener("submit", async function (e) {
         if (values[i]["quantity"] <= product_data["quantity"]) {
           let cost = values[i]["quantity"] * values[i]["price"];
           total_price += cost;
-          receipt += product_data["item_name"] +" (x" + values[i]["quantity"] + "): $" + cost.toFixed(2) + "<br>";
+          receipt += product_data["item_name"] +" (x" + values[i]["quantity"] + "): $" 
+                     + cost.toFixed(2) + "<br>";
           update(ref(db, "products/merch/" + keys[i]), {
             quantity: product_data["quantity"] - values[i]["quantity"]
           });
         } else {
-          alert("Your order could not be processed. You currently have more '" + values[i]["item_name"] + "' in your cart than available.");
+          alert("Your order could not be processed. You currently have more '" + 
+                values[i]["item_name"] + "' in your cart than available.");
           can_process = false;
         }
       })
