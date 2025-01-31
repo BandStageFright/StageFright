@@ -288,32 +288,14 @@ checkout_form.addEventListener("submit", async function (e) {
         if (values[i]["quantity"] <= product_data["quantity"]) {
           let cost = values[i]["quantity"] * values[i]["price"];
           total_price += cost;
-<<<<<<< HEAD
           receipt += product_data["item_name"] +" (x" + values[i]["quantity"] + "): $" 
                      + cost.toFixed(2) + "<br>";
-=======
-          receipt +=
-            product_data["item_name"] +
-            " (x" +
-            values[i]["quantity"] +
-            "): $" +
-            cost.toFixed(2) +
-            "<br>";
->>>>>>> 740b347d246b28f8c6f54efa7a148fbdf239efbe
           update(ref(db, "products/merch/" + keys[i]), {
             quantity: product_data["quantity"] - values[i]["quantity"],
           });
         } else {
-<<<<<<< HEAD
           alert("Your order could not be processed. You currently have more '" + 
                 values[i]["item_name"] + "' in your cart than available.");
-=======
-          alert(
-            "Your order could not be processed. You currently have more '" +
-              values[i]["item_name"] +
-              "' in your cart than available."
-          );
->>>>>>> 740b347d246b28f8c6f54efa7a148fbdf239efbe
           can_process = false;
         }
       })
