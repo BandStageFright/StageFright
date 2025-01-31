@@ -187,13 +187,7 @@ checkout_form.addEventListener("submit", async function (e) {
       let ticket_data = snapshot.val();
       if (requested_quantity <= ticket_data["quantity"]) {
         total_cost = requested_quantity * ticket_data["price"];
-        receipt =
-          "Date: " +
-          new Date(values[i]["date"]).toUTCString().slice(0, 16) +
-          "<br>Location: " +
-          ticket_data["location"] +
-          "<br>Number of Tickets: " +
-          requested_quantity;
+        receipt = "Date: " + new Date(ticket_data["date"]).toUTCString().slice(0, 16) + "<br>Location: " + ticket_data["location"] + "<br>Number of Tickets: " + requested_quantity;
         update(ref(db, "products/tickets/" + current_id), {
           quantity: ticket_data["quantity"] - requested_quantity,
         });
